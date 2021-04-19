@@ -18,7 +18,7 @@ public class EmployeeDaoService implements EmployeeService{
     private final MilitaryRegistrationService militaryRegistrationService;
     private final Map<Integer, EmployeeEntity> employeeMap;
 
-    public EmployeeDaoService(DataBase dataBase) {
+    public EmployeeDaoService(DataBase dataBase) throws SQLException {
         this.employeeRecordService = new EmployeeRecordDaoService(dataBase);
         this.jobService = new JobDaoService(dataBase);
         this.certificateService = new CertificateDaoService(dataBase);

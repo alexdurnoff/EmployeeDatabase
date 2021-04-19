@@ -1,6 +1,6 @@
 package org.example.ui;
 
-import entity.EmploymentAgreement;
+import entity.agreement.EmploymentAgreement;
 import entity.Filter;
 import entity.EmployeeEntity;
 import javafx.scene.control.DatePicker;

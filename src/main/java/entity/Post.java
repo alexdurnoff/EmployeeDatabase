@@ -1,5 +1,9 @@
 package entity;
 
+import javafx.scene.control.ChoiceBox;
+import javafx.util.StringConverter;
+
+import java.util.Arrays;
 import java.util.function.Predicate;
 
 /**
@@ -62,10 +66,38 @@ public enum Post implements Predicate<Post> {
     ;
 
     private final String title;
+    private final ChoiceBox<Post> choiceBox;
 
     Post(String title) {
         this.title = title;
+        this.choiceBox = new ChoiceBox<>();
     }
+
+    public static Post postByName(String string) {
+        Post[] values = Post.values();
+        for (Post value : values) {
+            if (value.title.equals(string)) return value;
+        }
+        return Post.DEFAULTPOST;
+    }
+
+    public ChoiceBox<Post> choiceBox(){
+        choiceBox.getItems().addAll(Arrays.asList(Post.values()));
+        choiceBox.setConverter(new StringConverter<Post>() {
+            @Override
+            public String toString(Post object) {
+                return object.title;
+            }
+
+            @Override
+            public Post fromString(String string) {
+                return Post.postByName(string);
+            }
+        });
+        choiceBox.setValue(this);
+        return choiceBox;
+    }
+
 
     /**
      * @param post - Post, с которым сравнивается наша должность.

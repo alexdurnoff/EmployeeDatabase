@@ -1,5 +1,8 @@
 package entity;
 
+import javafx.scene.control.TextField;
+import org.example.ui.NumberFormatExceptionWindow;
+
 import java.util.function.Predicate;
 
 /**
@@ -10,7 +13,7 @@ public class TableNumber implements Predicate<TableNumber> {
     /**
      * Табельный номер сотрудника
      */
-    private final int tableNumberValue;
+    private int tableNumberValue;
 
 
     /**
@@ -42,11 +45,27 @@ public class TableNumber implements Predicate<TableNumber> {
         this.tableNumberValue = value;
     }
 
+    public int value(){
+        return this.value();
+    }
+
     /**
      * Конструктор без параметров. Присваивается значение по умолчанию.
      */
     public TableNumber(){
         this.tableNumberValue = defaultTableNumber;
+    }
+
+    public TextField textField(){
+        TextField textField = new TextField(String.valueOf(this.tableNumberValue));
+        textField.textProperty().addListener(((observable, oldValue, newValue) -> {
+            try {
+                this.tableNumberValue = Integer.parseInt(newValue);
+            } catch (NumberFormatException e) {
+                NumberFormatExceptionWindow.show();
+            }
+        }));
+        return textField;
     }
 
 

@@ -1,9 +1,9 @@
 package org.example.ui;
 
-import entity.ContractAgreement;
-import entity.DefaultAgreement;
-import entity.EmploymentAgreement;
-import entity.EmploymentContract;
+import entity.agreement.ContractAgreement;
+import entity.agreement.DefaultAgreement;
+import entity.agreement.EmploymentAgreement;
+import entity.agreement.EmploymentContract;
 import javafx.scene.control.DatePicker;
 
 /**

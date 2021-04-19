@@ -1,5 +1,9 @@
 package entity;
 
+import javafx.scene.control.ChoiceBox;
+import javafx.util.StringConverter;
+
+import java.util.Arrays;
 import java.util.function.Predicate;
 
 /**
@@ -31,9 +35,11 @@ public enum Division implements Predicate<Division> {
     ;
 
     private final String title;
+    private final ChoiceBox<Division> choiceBox;
 
     Division(String title) {
         this.title = title;
+        this.choiceBox = new ChoiceBox<>();
     }
 
 
@@ -53,5 +59,30 @@ public enum Division implements Predicate<Division> {
     @Override
     public String toString() {
         return this.title;
+    }
+
+    public static Division divisionByName(String name){
+        Division[] values = Division.values();
+        for (Division value : values) {
+            if (value.title.equals(name)) return value;
+        }
+        return Division.DEFAULTDIVISION;
+    }
+
+    public ChoiceBox<Division> choiceBox(){
+        choiceBox.getItems().addAll(Arrays.asList(Division.values()));
+        choiceBox.setConverter(new StringConverter<Division>() {
+            @Override
+            public String toString(Division object) {
+                return object.title;
+            }
+
+            @Override
+            public Division fromString(String string) {
+                return Division.divisionByName(string);
+            }
+        });
+        choiceBox.setValue(this);
+        return choiceBox;
     }
 }

@@ -1,5 +1,6 @@
 package card;
 
+import dao.DataBase;
 import javafx.scene.Node;
 
 /**
@@ -9,5 +10,5 @@ import javafx.scene.Node;
  */
 public interface EmployeeInformationNode {
     Node node();
-    update();
+    void update(DataBase dataBase);
 }

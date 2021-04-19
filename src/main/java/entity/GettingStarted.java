@@ -1,5 +1,8 @@
 package entity;
 
+import javafx.scene.Node;
+import javafx.scene.layout.HBox;
+
 import java.time.LocalDate;
 import java.util.function.Predicate;
 
@@ -31,11 +34,23 @@ public class GettingStarted implements Predicate<GettingStarted> {
         this.hBox = new HBox();
     }
 
+    public GettingStarted(String date){
+        LocalDate localDate1;
+        try {
+            localDate1 = LocalDate.parse(date);
+        } catch (Exception e){
+            localDate1 = defaultDate;
+        }
+        this.localDate = localDate1;
+        this.hBox = new HBox();
+    }
+
     /**
      * Конструктор без параметров. Присваивается значение по умолчанию.
      */
     public GettingStarted(){
         this.localDate = defaultDate;
+        this.hBox = new HBox();
     }
 
     /**
@@ -52,5 +67,10 @@ public class GettingStarted implements Predicate<GettingStarted> {
 
     public Node node(){
         return this.hBox;
+    }
+
+    @Override
+    public String toString() {
+        return super.toString();
     }
 }
