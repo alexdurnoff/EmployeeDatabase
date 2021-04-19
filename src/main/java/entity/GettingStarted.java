@@ -11,7 +11,8 @@ public class GettingStarted implements Predicate<GettingStarted> {
     /**
      * Дата начала работы сотрудника
      */
-    private final LocalDate localDate;
+    private LocalDate localDate;
+    private final HBox hBox;
 
 
     /**
@@ -27,6 +28,7 @@ public class GettingStarted implements Predicate<GettingStarted> {
      */
     public GettingStarted(LocalDate localDate) {
         this.localDate = localDate;
+        this.hBox = new HBox();
     }
 
     /**
@@ -46,5 +48,9 @@ public class GettingStarted implements Predicate<GettingStarted> {
     public boolean test(GettingStarted gettingStarted) {
         if (gettingStarted.localDate.equals(defaultDate)) return true;
         return this.localDate.equals(gettingStarted.localDate);
+    }
+
+    public Node node(){
+        return this.hBox;
     }
 }

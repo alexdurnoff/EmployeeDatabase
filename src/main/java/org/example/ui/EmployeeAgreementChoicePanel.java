@@ -2,7 +2,7 @@ package org.example.ui;
 
 import entity.EmploymentAgreement;
 import entity.Filter;
-import entity.EmployeeRecord;
+import entity.EmployeeEntity;
 import javafx.scene.control.DatePicker;
 import javafx.scene.layout.HBox;
 
@@ -10,15 +10,15 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class EmployeeAgreementChoicePanel extends HBox implements Filter {
-    private final List<EmployeeRecord> employeeRecordList;
+    private final List<EmployeeEntity> employeeEntityList;
     private final EmploymentAgreementChooser employmentAgreementChooser;
     private final DatePicker datePickerFrom;
     private final DatePicker datePickerTo;
 
 
 
-    public EmployeeAgreementChoicePanel(List<EmployeeRecord> employeeRecordList) {
-        this.employeeRecordList = employeeRecordList;
+    public EmployeeAgreementChoicePanel(List<EmployeeEntity> employeeEntityList) {
+        this.employeeEntityList = employeeEntityList;
         this.datePickerFrom = new DatePicker();
         this.datePickerTo = new DatePicker();
         this.employmentAgreementChooser = new EmploymentAgreementChooser();
@@ -40,8 +40,8 @@ public class EmployeeAgreementChoicePanel extends HBox implements Filter {
     }
 
     @Override
-    public List<EmployeeRecord> filter() {
-        List<EmployeeRecord> employeeRecords = new ArrayList<>();
+    public List<EmployeeEntity> filter() {
+        List<EmployeeEntity> employeeEntities = new ArrayList<>();
         EmploymentAgreement employmentAgreement = new EmployeeAgreementFromChoicePanel(
                 this.employmentAgreementChooser,
                 this.datePickerFrom,

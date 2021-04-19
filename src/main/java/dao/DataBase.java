@@ -1,12 +1,8 @@
 package dao;
 
-import entity.EmployeeRecord;
-
-import java.util.List;
+import java.sql.ResultSet;
 
 public interface DataBase {
-    List<EmployeeRecord> findAllEmployee();
-    void updateEmployee(int id);
-    void deleteEmployee(EmployeeRecord employeeRecord);
-    void addEmployee(EmployeeRecord employeeRecord);
+    void executeUpdateRequest(String request);
+    ResultSet getResultSet(String request);
 }

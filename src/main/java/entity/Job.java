@@ -7,7 +7,7 @@ import java.util.function.Predicate;
  * Класс работа. Реализует интерфейс Predicate для фильтрации
  * полученного из базы данных списка сотрудников по параметру "Сведения о работе"
  */
-public class Job implements Predicate<Job> {
+public class Job implements Predicate<Job> implements EmployeeInformationNode {
     private final GettingStarted gettingStarted;
     private final TableNumber tableNumber;
     private final Division division;
@@ -48,5 +48,11 @@ public class Job implements Predicate<Job> {
                 this.workSchedule.test(job.workSchedule) &&
                 this.holidaySchedule.test(job.holidaySchedule) &&
                 this.payment.test(job.payment));
+    }
+
+    public Node node(){
+        this.gridPane = new GridPane();
+
+
     }
 }

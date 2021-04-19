@@ -2,7 +2,7 @@ package entity;
 
 import card.*;
 
-public class Employee implements EmployeeRecord {
+public class Employee implements EmployeeEntity {
     private final int id;
     private final Image image;
     private final Job job;

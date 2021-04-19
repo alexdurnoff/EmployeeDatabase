@@ -2,7 +2,7 @@ package entity;
 
 import card.EmployeeCard;
 
-public interface EmployeeRecord {
+public interface EmployeeEntity {
     boolean filterByDocument(Document document);
     boolean filterByJob(Job job);
     boolean filterByEducationAndFamily(EducationAndFamily educationAndFamily);
