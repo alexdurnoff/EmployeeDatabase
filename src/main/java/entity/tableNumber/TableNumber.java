@@ -1,4 +1,4 @@
-package entity;
+package entity.tableNumber;
 
 import javafx.scene.control.TextField;
 import org.example.ui.NumberFormatExceptionWindow;
@@ -57,7 +57,7 @@ public class TableNumber implements Predicate<TableNumber> {
     }
 
     public TextField textField(){
-        TextField textField = new TextField(String.valueOf(this.tableNumberValue));
+        TextField textField = new TableNumberTextField(String.valueOf(this.tableNumberValue));
         textField.textProperty().addListener(((observable, oldValue, newValue) -> {
             try {
                 this.tableNumberValue = Integer.parseInt(newValue);

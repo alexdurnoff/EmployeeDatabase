@@ -1,9 +1,10 @@
-package org.example.ui;
+package entity.tableNumber;
 
-import entity.TableNumber;
+import entity.EntityView;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.GridPane;
+import org.example.ui.NumberFormatExceptionWindow;
 
 /**
  * Вьюшка для взаимодействия с пользователем.
@@ -11,7 +12,7 @@ import javafx.scene.layout.GridPane;
  * табельного номера. Возвращает это значение
  * для записи в базу.
  */
-public class TableNumberView {
+public class TableNumberView implements EntityView {
     private final TextField textField;
     private final Label label;
 
@@ -27,7 +28,7 @@ public class TableNumberView {
     private final static int incorrectValue = -200;
 
     public TableNumberView(int tableNumber){
-        this.textField = new TextField(String.valueOf(tableNumber));
+        this.textField = new TableNumberTextField(String.valueOf(tableNumber));
         this.label = new Label("табельный номер");
         this.textField.textProperty().addListener(((observable, oldValue, newValue) -> {
             try {
@@ -51,9 +52,18 @@ public class TableNumberView {
         gridPane.add(textField, 1, rowNumber);
     }
 
+    @Override
+    public String requestPart() {
+        return "set table_number = " + this.value();
+    }
+
     public boolean test(TableNumberView tableNumberView) {
         if (tableNumberView.value() == defaultTableNumber) return true;
         return this.value() == tableNumberView.value();
+    }
+
+    public int userChoice(){
+        return Integer.parseInt(this.textField.getText());
     }
 
 }

@@ -1,5 +1,6 @@
-package org.example.ui;
+package entity.gettingstarted;
 
+import entity.EntityView;
 import javafx.scene.control.DatePicker;
 import javafx.scene.control.Label;
 import javafx.scene.layout.GridPane;
@@ -11,7 +12,7 @@ import java.util.function.Predicate;
  * Класс инкапсулирует DataPicker для взаимодействия с пользователем.
  * Возвращает значение выбранной пользователем даты принятия на работу.
  */
-public class GettingStartedView implements Predicate<GettingStartedView> {
+public class GettingStartedView implements Predicate<GettingStartedView>, EntityView {
     /**
      * Дата начала работы сотрудника
      */
@@ -23,20 +24,20 @@ public class GettingStartedView implements Predicate<GettingStartedView> {
      * @param localDate - дата начала работы.
      */
     public GettingStartedView(LocalDate localDate) {
-        this.datePicker = new DatePicker(localDate);
+        this.datePicker = new GettingStartedDatePicker(localDate);
         this.label = new Label(datePicker.getValue().toString());
     }
 
     public GettingStartedView(String date){
-        DatePicker datePicker1;
+        GettingStartedDatePicker datePicker1;
         Label label1;
         LocalDate localDate;
         try {
             localDate = LocalDate.parse(date);
-            datePicker1 = new DatePicker(localDate);
+            datePicker1 = new GettingStartedDatePicker(localDate);
             label1 = new Label(datePicker1.getValue().toString());
         } catch (Exception e){
-            datePicker1 = new DatePicker();
+            datePicker1 = new GettingStartedDatePicker();
             label1 = new Label();
         }
         this.datePicker = datePicker1;
@@ -71,10 +72,23 @@ public class GettingStartedView implements Predicate<GettingStartedView> {
         return this.datePicker.getValue().toString();
     }
 
-    public void addToGridPane(GridPane gridPane, Integer rowNumber){
+    @Override
+    public void addToGridPane(GridPane gridPane, int rowNumber){
         Label header = new Label("Дата принятия на работу");
         gridPane.add(header,0, rowNumber);
         gridPane.add(this.label, 1, rowNumber);
         gridPane.add(this.datePicker, 2, rowNumber);
+    }
+
+    @Override
+    public String requestPart() {
+        return "set getting_started = " +
+                "'" +
+                userChoice() +
+                "'";
+    }
+
+    public String userChoice() {
+        return this.datePicker.getValue().toString();//Пока так.
     }
 }

@@ -1,8 +1,13 @@
 package entity;
 
-import card.EmployeeInformationNode;
-import dao.DataBase;
+import card.CardPartition;
 import entity.agreement.EmploymentAgreement;
+import entity.division.DivisionView;
+import entity.holydayschedule.HolidaySchedule;
+import entity.payment.PaymentView;
+import entity.post.PostView;
+import entity.tableNumber.TableNumber;
+import entity.workschedule.WorkSchedule;
 import javafx.scene.Node;
 
 import java.util.function.Predicate;
@@ -11,36 +16,36 @@ import java.util.function.Predicate;
  * Класс работа. Реализует интерфейс Predicate для фильтрации
  * полученного из базы данных списка сотрудников по параметру "Сведения о работе"
  */
-public class Job implements Predicate<Job>, EmployeeInformationNode {
+public class Job implements Predicate<Job>, CardPartition {
     private final int employeeId;
     private GettingStarted gettingStarted;
     private TableNumber tableNumber;
-    private Division division;
-    private Post post;
+    private DivisionView divisionView;
+    private PostView postView;
     private EmploymentAgreement agreement;
     private WorkSchedule workSchedule;
     private HolidaySchedule holidaySchedule;
-    private Payment payment;
+    private PaymentView paymentView;
 
     public Job(
             int employeeId,
             GettingStarted gettingStarted,
             TableNumber tableNumber,
-            Division division,
-            Post post,
+            DivisionView divisionView,
+            PostView postView,
             EmploymentAgreement agreement,
             WorkSchedule workSchedule,
             HolidaySchedule holidaySchedule,
-            Payment payment) {
+            PaymentView paymentView) {
         this.employeeId = employeeId;
         this.gettingStarted = gettingStarted;
         this.tableNumber = tableNumber;
-        this.division = division;
-        this.post = post;
+        this.divisionView = divisionView;
+        this.postView = postView;
         this.agreement = agreement;
         this.workSchedule = workSchedule;
         this.holidaySchedule = holidaySchedule;
-        this.payment = payment;
+        this.paymentView = paymentView;
     }
 
     public int getEmployeeId() {
@@ -55,12 +60,12 @@ public class Job implements Predicate<Job>, EmployeeInformationNode {
         return tableNumber;
     }
 
-    public Division getDivision() {
-        return division;
+    public DivisionView getDivision() {
+        return divisionView;
     }
 
-    public Post getPost() {
-        return post;
+    public PostView getPost() {
+        return postView;
     }
 
     public EmploymentAgreement getAgreement() {
@@ -75,8 +80,8 @@ public class Job implements Predicate<Job>, EmployeeInformationNode {
         return holidaySchedule;
     }
 
-    public Payment getPayment() {
-        return payment;
+    public PaymentView getPayment() {
+        return paymentView;
     }
 
     @Override
@@ -84,12 +89,12 @@ public class Job implements Predicate<Job>, EmployeeInformationNode {
         return (
                 this.gettingStarted.test(job.gettingStarted) &&
                         this.tableNumber.test(job.tableNumber) &&
-                        this.division.test(job.division) &&
-                        this.post.test(job.post) &&
+                        this.divisionView.test(job.divisionView) &&
+                        this.postView.test(job.postView) &&
                         this.agreement.test(job.agreement) &&
                         this.workSchedule.test(job.workSchedule) &&
                         this.holidaySchedule.test(job.holidaySchedule) &&
-                        this.payment.test(job.payment));
+                        this.paymentView.test(job.paymentView));
     }
 
     @Override
@@ -98,7 +103,7 @@ public class Job implements Predicate<Job>, EmployeeInformationNode {
     }
 
     @Override
-    public void update(DataBase dataBase) {
+    public void update() {
 
     }
 }

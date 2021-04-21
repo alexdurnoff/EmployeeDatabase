@@ -8,7 +8,7 @@ import javafx.scene.Node;
  * Возвращает его методе Node, который будет отображаться в EmployeeCard,
  * или в его детях. Метод update обновляет запись в базе данных.
  */
-public interface EmployeeInformationNode {
+public interface CardPartition {
     Node node();
-    void update(DataBase dataBase);
+    void update();
 }

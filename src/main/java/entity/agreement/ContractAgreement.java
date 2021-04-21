@@ -1,5 +1,10 @@
 package entity.agreement;
 
+import entity.EntityView;
+import javafx.scene.control.ChoiceBox;
+import javafx.scene.control.Label;
+import javafx.scene.layout.GridPane;
+
 import java.time.LocalDate;
 
 /**
@@ -8,10 +13,12 @@ import java.time.LocalDate;
 public class ContractAgreement implements EmploymentAgreement {
     private LocalDate localDateFrom;
     private LocalDate localDateTO;
+    private final ChoiceBox<EmploymentAgreement> choiceBox;
 
     public ContractAgreement(LocalDate localDateFrom, LocalDate localDateTO) {
         this.localDateFrom = localDateFrom;
         this.localDateTO = localDateTO;
+        this.choiceBox = new AgreementChoiceBox();
     }
 
     @Override
@@ -41,22 +48,28 @@ public class ContractAgreement implements EmploymentAgreement {
     }
 
     @Override
-    public void setFrom(LocalDate localDate) {
-        this.localDateFrom = localDate;
+    public void addToGridPane(GridPane gridPane, int rowNumber) {
+        Label label = label();
+        DatePickerFrom datePickerFrom = new DatePickerFrom(this.localDateFrom);
+        DatePickerTo datePickerTo = new DatePickerTo(this.localDateTO);
+        gridPane.add(label, 0, rowNumber);
+        gridPane.add(choiceBox, 1, rowNumber);
+        gridPane.add(datePickerFrom, 2, rowNumber);
+        gridPane.add(datePickerTo, 3, rowNumber);
+        choiceBox.setOnAction(ae -> {
+            gridPane.getChildren().remove(label);
+            gridPane.getChildren().remove(choiceBox);
+            gridPane.getChildren().remove(datePickerFrom);
+            gridPane.getChildren().remove(datePickerTo);
+            choiceBox.getValue().addToGridPane(gridPane,rowNumber);
+        });
+
+
+
     }
 
     @Override
-    public void setTo(LocalDate localDate) {
-        this.localDateTO = localDate;
-    }
-
-    @Override
-    public LocalDate localDateFrom() {
-        return this.localDateFrom;
-    }
-
-    @Override
-    public LocalDate localDateTo() {
-        return this.localDateTO;
+    public String requestPart() {
+        return null;
     }
 }

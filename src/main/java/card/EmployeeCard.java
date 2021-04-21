@@ -10,10 +10,10 @@ import java.util.List;
  */
 public class EmployeeCard extends VBox {
     private final int id;
-    public EmployeeCard(int id, List<EmployeeInformationNode> nodeList) {
+    public EmployeeCard(int id, List<CardPartition> nodeList) {
         this.id = id;
-        FXCollections.observableList(nodeList).forEach(employeeInformationNode ->{
-            this.getChildren().add(employeeInformationNode.node());
+        FXCollections.observableList(nodeList).forEach(cardPartition ->{
+            this.getChildren().add(cardPartition.node());
         });
     }
 }

@@ -1,29 +1,32 @@
 package record;
 
 import dao.DataBase;
-import entity.*;
 import entity.agreement.*;
+import entity.division.DivisionView;
+import entity.holydayschedule.HolidaySchedule;
+import entity.payment.PaymentView;
+import entity.post.PostView;
+import entity.workschedule.WorkSchedule;
 import javafx.scene.Node;
 import javafx.scene.layout.GridPane;
-import org.example.ui.GettingStartedView;
-import org.example.ui.JobHeaderView;
-import org.example.ui.TableNumberView;
+import entity.gettingstarted.GettingStartedView;
+import entity.job.JobHeaderView;
+import entity.tableNumber.TableNumberView;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.time.LocalDate;
 
 public class JobRecord implements Record {
     private final DataBase dataBase;
     private final int employeeId;
     private GettingStartedView gettingStartedView;
     private TableNumberView tableNumberView;
-    private Division division;
-    private Post post;
+    private DivisionView divisionView;
+    private PostView postView;
     private EmploymentAgreement agreement;
     private WorkSchedule workSchedule;
     private HolidaySchedule holidaySchedule;
-    private Payment payment;
+    private PaymentView paymentView;
 
     public JobRecord(DataBase dataBase, int employeeId) throws SQLException {
         this.dataBase = dataBase;
@@ -41,12 +44,12 @@ public class JobRecord implements Record {
         while (resultSet.next()){
             this.gettingStartedView =  new GettingStartedView(resultSet.getString(1));
             this.tableNumberView = new TableNumberView(resultSet.getInt(2));
-            this.division = Division.divisionByName(resultSet.getString(3));
-            this.post = Post.postByName(resultSet.getString(4));
+            this.divisionView = DivisionView.divisionByName(resultSet.getString(3));
+            this.postView = PostView.postByName(resultSet.getString(4));
             this.agreement = new AgreementFromResultSet(resultSet).employmentAgreement();
             this.workSchedule = new WorkSchedule(resultSet.getString(8));
             this.holidaySchedule = new HolidaySchedule(resultSet.getString(9));
-            this.payment = Payment.paymentByTitle(resultSet.getString(10));
+            this.paymentView = PaymentView.paymentByTitle(resultSet.getString(10));
         }
     }
 
@@ -58,7 +61,7 @@ public class JobRecord implements Record {
                 .append("\n")
                 .append("set getting_started = ")
                 .append("'")
-                .append(gettingStartedView.toString())
+                .append(gettingStartedView.userChoice())
                 .append("'")
                 .append(',')
                 .append("set table_number = ")
@@ -66,12 +69,12 @@ public class JobRecord implements Record {
                 .append(", ")
                 .append("set division = ")
                 .append("'")
-                .append(division.toString())
+                .append(divisionView.usersChoice().toString())
                 .append("'")
                 .append(", ")
-                .append(" set post = ")
+                .append("set post = ")
                 .append("'")
-                .append(post.toString())
+                .append(postView.userChoice().toString())
                 .append("'")
                 .append(", ")
                 .append(" set agreement = ")
@@ -89,19 +92,19 @@ public class JobRecord implements Record {
                 .append(agreement.to())
                 .append("'")
                 .append(", ")
-                .append(" set work_schedule = ")
+                .append("set work_schedule = ")
                 .append("'")
-                .append(workSchedule.toString())
-                .append("'")
-                .append(", ")
-                .append(" set holyday_schedule = ")
-                .append("'")
-                .append(holidaySchedule.toString())
+                .append(workSchedule.userChoice())
                 .append("'")
                 .append(", ")
-                .append(" set payment = ")
+                .append("set holyday_schedule = ")
                 .append("'")
-                .append(payment.toString())
+                .append(holidaySchedule.userChoice())
+                .append("'")
+                .append(", ")
+                .append("set payment = ")
+                .append("'")
+                .append(paymentView.userChoice())
                 .append("'")
                 .append(' ')
                 .append("where employee_id = ")
@@ -114,11 +117,15 @@ public class JobRecord implements Record {
     public Node node() {
         GridPane gridPane = new GridPane();
         int rowNumber = 0;
-        new JobHeaderView().addToGridPane(gridPane,rowNumber);
-        rowNumber++;
-        this.gettingStartedView.addToGridPane(gridPane,rowNumber);
-        rowNumber++;
-
+        new JobHeaderView().addToGridPane(gridPane, rowNumber++);
+        this.gettingStartedView.addToGridPane(gridPane, rowNumber++);
+        this.tableNumberView.addToGridPane(gridPane, rowNumber++);
+        this.divisionView.addToGridPane(gridPane, rowNumber++);
+        this.postView.addToGridPane(gridPane, rowNumber++);
+        this.agreement.addToGridPane(gridPane, rowNumber++);
+        this.holidaySchedule.addToGridPane(gridPane, rowNumber++);
+        this.workSchedule.addToGridPane(gridPane, rowNumber++);
+        this.paymentView.addToGridPane(gridPane, rowNumber++);
         return gridPane;
     }
 
@@ -130,11 +137,11 @@ public class JobRecord implements Record {
         return (
                 this.gettingStartedView.test(jobRecord.gettingStartedView) &&
                         this.tableNumberView.test(jobRecord.tableNumberView) &&
-                        this.division.test(jobRecord.division) &&
-                        this.post.test(jobRecord.post) &&
+                        this.divisionView.test(jobRecord.divisionView) &&
+                        this.postView.test(jobRecord.postView) &&
                         this.agreement.test(jobRecord.agreement) &&
                         this.workSchedule.test(jobRecord.workSchedule) &&
                         this.holidaySchedule.test(jobRecord.holidaySchedule) &&
-                        this.payment.test(jobRecord.payment));
+                        this.paymentView.test(jobRecord.paymentView));
     }
 }

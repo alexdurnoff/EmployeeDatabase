@@ -1,16 +1,18 @@
-package entity;
+package entity.post;
 
+import entity.EntityView;
 import javafx.scene.control.ChoiceBox;
+import javafx.scene.control.Label;
+import javafx.scene.layout.GridPane;
 import javafx.util.StringConverter;
 
-import java.util.Arrays;
 import java.util.function.Predicate;
 
 /**
  * Класс инкакпсулирует должность сотрудника.
  * Реализует интерфейс Predicate<Post> для фильтрации списка.
  */
-public enum Post implements Predicate<Post> {
+public enum PostView implements Predicate<PostView>, EntityView {
     DIRECTOR("директор"),
     CHIEFENGENEER("главный инженер"),
     SECRETARYMANAGER("секретарь приемной руководителя"),
@@ -66,48 +68,62 @@ public enum Post implements Predicate<Post> {
     ;
 
     private final String title;
-    private final ChoiceBox<Post> choiceBox;
+    private final ChoiceBox<PostView> choiceBox;
 
-    Post(String title) {
+    PostView(String title) {
         this.title = title;
-        this.choiceBox = new ChoiceBox<>();
+        this.choiceBox = new PostChoiceBox();
     }
 
-    public static Post postByName(String string) {
-        Post[] values = Post.values();
-        for (Post value : values) {
+    public static PostView postByName(String string) {
+        PostView[] values = PostView.values();
+        for (PostView value : values) {
             if (value.title.equals(string)) return value;
         }
-        return Post.DEFAULTPOST;
+        return PostView.DEFAULTPOST;
     }
 
-    public ChoiceBox<Post> choiceBox(){
-        choiceBox.getItems().addAll(Arrays.asList(Post.values()));
-        choiceBox.setConverter(new StringConverter<Post>() {
+    public void addToGridPane(GridPane gridPane, int rowNumber){
+        Label label = new Label("Должность");
+        this.choiceBox.getItems().addAll(values());
+        this.choiceBox.setConverter(new StringConverter<PostView>() {
             @Override
-            public String toString(Post object) {
+            public String toString(PostView object) {
                 return object.title;
             }
 
             @Override
-            public Post fromString(String string) {
-                return Post.postByName(string);
+            public PostView fromString(String string) {
+                return postByName(string);
             }
         });
-        choiceBox.setValue(this);
-        return choiceBox;
+        this.choiceBox.setOnAction(ae ->{
+            label.setText(choiceBox.getValue().title);
+        });
+    }
+
+    @Override
+    public String requestPart() {
+        return "set post = " +
+                "'" +
+                userChoice() +
+                "'";
+    }
+
+    public PostView userChoice(){
+        return this.choiceBox.getValue();
     }
 
 
     /**
-     * @param post - Post, с которым сравнивается наша должность.
+     * @param postView - Post, с которым сравнивается наша должность.
      * @return true, если должность совпадает с нашей, или если прилетела
      * дефолтная должность.
      */
     @Override
-    public boolean test(Post post) {
-        if (post == DEFAULTPOST) return true;
-        return this == post;
+    public boolean test(PostView postView) {
+        if (postView == DEFAULTPOST) return true;
+        return this == postView;
     }
 
 
