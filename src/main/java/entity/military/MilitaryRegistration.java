@@ -9,22 +9,22 @@ import javafx.util.StringConverter;
 import java.util.Arrays;
 import java.util.function.Predicate;
 
-public enum MillitaryRegistration implements EntityView, Predicate<MillitaryRegistration> {
+public enum MilitaryRegistration implements EntityView, Predicate<MilitaryRegistration> {
     GENERIC("общий"),
     SPECIAL("специальный"),
     DEFAULTREGISTRATION("воинский учет");
 
     private final String title;
-    private final ChoiceBox<MillitaryRegistration> choiceBox;
+    private final ChoiceBox<MilitaryRegistration> choiceBox;
 
-    MillitaryRegistration(String string) {
+    MilitaryRegistration(String string) {
         this.title = string;
         this.choiceBox = new ChoiceBox<>();
     }
 
-    public static MillitaryRegistration registrationByTitle(String title){
-        MillitaryRegistration[] values = values();
-        for (MillitaryRegistration value : values) {
+    public static MilitaryRegistration registrationByTitle(String title){
+        MilitaryRegistration[] values = values();
+        for (MilitaryRegistration value : values) {
             if (value.title.equals(title)) return value;
         }
         return DEFAULTREGISTRATION;
@@ -34,14 +34,14 @@ public enum MillitaryRegistration implements EntityView, Predicate<MillitaryRegi
     public void addToGridPane(GridPane gridPane, int rowNumber) {
         Label label = new Label("воинский учет");
         this.choiceBox.getItems().addAll(Arrays.asList(values()));
-        this.choiceBox.setConverter(new StringConverter<MillitaryRegistration>() {
+        this.choiceBox.setConverter(new StringConverter<MilitaryRegistration>() {
             @Override
-            public String toString(MillitaryRegistration object) {
+            public String toString(MilitaryRegistration object) {
                 return object.title;
             }
 
             @Override
-            public MillitaryRegistration fromString(String string) {
+            public MilitaryRegistration fromString(String string) {
                 return registrationByTitle(string);
             }
         });
@@ -50,7 +50,7 @@ public enum MillitaryRegistration implements EntityView, Predicate<MillitaryRegi
         gridPane.add(choiceBox, 1, rowNumber);
     }
 
-    private MillitaryRegistration userChoice(){
+    private MilitaryRegistration userChoice(){
         return this.choiceBox.getValue();
     }
 
@@ -63,8 +63,8 @@ public enum MillitaryRegistration implements EntityView, Predicate<MillitaryRegi
     }
 
     @Override
-    public boolean test(MillitaryRegistration millitaryRegistration) {
-        if (millitaryRegistration == DEFAULTREGISTRATION) return true;
-        return this == millitaryRegistration;
+    public boolean test(MilitaryRegistration militaryRegistration) {
+        if (militaryRegistration == DEFAULTREGISTRATION) return true;
+        return this == militaryRegistration;
     }
 }

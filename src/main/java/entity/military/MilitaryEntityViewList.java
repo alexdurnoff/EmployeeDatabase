@@ -28,7 +28,7 @@ public class MilitaryEntityViewList {
             this.militaryEntityViewList.add(new VUSCodeName(resultSet.getString(3)));
             this.militaryEntityViewList.add(AvailableCategory.categoryByTitle(resultSet.getString(4)));
             this.militaryEntityViewList.add(new MilitaryCommissariat(resultSet.getString(5)));
-            this.militaryEntityViewList.add(MillitaryRegistration.registrationByTitle(resultSet.getString(6)));
+            this.militaryEntityViewList.add(MilitaryRegistration.registrationByTitle(resultSet.getString(6)));
             this.militaryEntityViewList.add(new RegistrationMark(resultSet.getString(7)));
         }
         return this.militaryEntityViewList;

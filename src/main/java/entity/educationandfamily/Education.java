@@ -34,6 +34,11 @@ public enum Education implements EnumEntity {
         return title;
     }
 
+    @Override
+    public EnumEntity defaultValue() {
+        return DEFAULT;
+    }
+
     public static Education educationByTitle(String title){
         Education[] values = values();
         for (Education value : values) {

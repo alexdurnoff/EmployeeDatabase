@@ -8,4 +8,5 @@ public interface EnumEntity {
     String columnName();
     String title();
     EnumEntity[] values();
+    EnumEntity defaultValue();
 }
