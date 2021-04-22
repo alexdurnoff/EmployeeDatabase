@@ -31,7 +31,7 @@ public class RequestByEntityViewList {
         }
         String string = stringBuilder.toString();
         string = string.substring(0, string.length()-1);
-        string = string + "where employee_id = " + employeeId;
+        string = string + "where employee_id = " + employeeId + ';';
         return string;
     }
 }

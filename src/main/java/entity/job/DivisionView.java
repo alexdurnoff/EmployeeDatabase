@@ -44,7 +44,8 @@ public enum DivisionView implements Predicate<DivisionView>, EntityView {
 
     DivisionView(String title) {
         this.title = title;
-        this.choiceBox = new DivisionChoiceBox();
+        //this.choiceBox = new DivisionChoiceBox();
+        this.choiceBox = new ChoiceBox<>();
     }
 
 
@@ -90,9 +91,6 @@ public enum DivisionView implements Predicate<DivisionView>, EntityView {
             }
         });
         this.choiceBox.setValue(this);
-        this.choiceBox.setOnAction(ae -> {
-            label.setText(choiceBox.getValue().title);
-        });
         gridPane.add(label, 0, rowNumber);
         gridPane.add(choiceBox, 1, rowNumber);
     }

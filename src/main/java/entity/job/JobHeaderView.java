@@ -3,20 +3,15 @@ package entity.job;
 import entity.EntityView;
 import javafx.scene.control.Label;
 import javafx.scene.layout.GridPane;
+import org.example.ui.HeaderEntityView;
 
 /**
  * Заголовок сведений о работе в карточке сотрудника.
  */
-public class JobHeaderView implements EntityView {
-    private final Label label = new Label("Сведения о работе");
-
-    public void addToGridPane(GridPane gridPane, int rowNumber){
-        gridPane.add(label, 0, rowNumber);
-        rowNumber++;
-    }
+public class JobHeaderView extends HeaderEntityView {
 
     @Override
-    public String requestPart() {
-        return "";
+    protected String labelTitle() {
+        return "сведения о работе";
     }
 }
