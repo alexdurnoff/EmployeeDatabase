@@ -1,19 +1,20 @@
 package entity.document;
 
-import entity.EntityView;
-import javafx.scene.layout.GridPane;
+import org.example.ui.TextEntityView;
 
-public class DocumentSerialView implements EntityView {
-    public DocumentSerialView(String string) {
+public class DocumentSerialView extends TextEntityView {
+
+    protected DocumentSerialView(String textContent) {
+        super(textContent);
     }
 
     @Override
-    public void addToGridPane(GridPane gridPane, int rowNumber) {
-
+    protected String labelText() {
+        return "серия";
     }
 
     @Override
-    public String requestPart() {
-        return null;
+    protected String ORMCellTitle() {
+        return "document_serial";
     }
 }

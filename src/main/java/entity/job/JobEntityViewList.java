@@ -2,15 +2,8 @@ package entity.job;
 
 import dao.DataBase;
 import entity.EntityView;
-import entity.agreement.AgreementFromResultSet;
-import entity.agreement.EmploymentAgreement;
-import entity.division.DivisionView;
-import entity.gettingstarted.GettingStartedView;
-import entity.holydayschedule.HolidaySchedule;
-import entity.payment.PaymentView;
-import entity.post.PostView;
-import entity.tableNumber.TableNumberView;
-import entity.workschedule.WorkSchedule;
+import entity.job.agreement.AgreementFromResultSet;
+import entity.job.agreement.EmploymentAgreement;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;

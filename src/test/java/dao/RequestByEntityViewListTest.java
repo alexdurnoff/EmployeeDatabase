@@ -1,21 +1,6 @@
 package dao;
 
-import entity.EntityView;
-import entity.division.DivisionView;
-import entity.gettingstarted.GettingStartedView;
-import entity.holydayschedule.HolidaySchedule;
-import entity.job.JobHeaderView;
-import entity.payment.PaymentView;
-import entity.post.PostView;
-import entity.tableNumber.TableNumberView;
-import entity.workschedule.WorkSchedule;
 import org.junit.jupiter.api.Test;
-
-import java.time.LocalDate;
-import java.util.ArrayList;
-import java.util.List;
-
-import static org.junit.jupiter.api.Assertions.*;
 
 class RequestByEntityViewListTest {
 

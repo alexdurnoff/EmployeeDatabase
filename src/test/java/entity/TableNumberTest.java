@@ -1,6 +1,6 @@
 package entity;
 
-import entity.tableNumber.TableNumber;
+import entity.job.TableNumber;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 

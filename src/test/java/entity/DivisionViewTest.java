@@ -1,6 +1,6 @@
 package entity;
 
-import entity.division.DivisionView;
+import entity.job.DivisionView;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 

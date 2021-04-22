@@ -1,19 +1,20 @@
 package entity.document;
 
-import entity.EntityView;
-import javafx.scene.layout.GridPane;
+import org.example.ui.TextEntityView;
 
-public class DocumentPublisher implements EntityView {
-    public DocumentPublisher(String string) {
+public class DocumentPublisher extends TextEntityView {
+
+    protected DocumentPublisher(String textContent) {
+        super(textContent);
     }
 
     @Override
-    public void addToGridPane(GridPane gridPane, int rowNumber) {
-
+    protected String labelText() {
+        return "орган, выдавший документ";
     }
 
     @Override
-    public String requestPart() {
-        return null;
+    protected String ORMCellTitle() {
+        return "document_publisher";
     }
 }
