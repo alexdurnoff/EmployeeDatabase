@@ -11,11 +11,11 @@ public class HolidaySchedule extends TextEntityView {
 
     @Override
     protected String labelText() {
-        return null;
+        return "График отпусков";
     }
 
     @Override
     protected String ORMCellTitle() {
-        return null;
+        return "holiday_schedule";
     }
 }

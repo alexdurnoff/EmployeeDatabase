@@ -2,6 +2,7 @@ package org.example.ui.filters;
 
 import dao.DataBase;
 import javafx.scene.control.Button;
+import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.HBox;
 
@@ -28,6 +29,10 @@ public abstract class TextFilter implements Filter {
         this.cancelButton = new Button("Отмена");
         this.hBox = new HBox();
         this.textField = new TextField();
+        this.hBox.getChildren().add(new Label("Фильтр"));
+        this.hBox.getChildren().add(textField);
+        this.hBox.getChildren().add(applyButton);
+        this.hBox.getChildren().add(cancelButton);
     }
 
     /**
@@ -43,13 +48,7 @@ public abstract class TextFilter implements Filter {
     protected abstract String columnName();
 
     @Override
-    public List<Integer> employeeIdList() throws SQLException {
-        String request = "select employee_id from " + tableName() +
-                " where " + columnName() + " = " + "'" + this.textField.getText() + "';";
-        ResultSet resultSet = dataBase.getResultSet(request);
-        while (resultSet.next()){
-            this.employeeIdList.add(resultSet.getInt(1));
-        }
+    public List<Integer> employeeIdList() {
         return employeeIdList;
     }
 
@@ -66,6 +65,7 @@ public abstract class TextFilter implements Filter {
     @Override
     public void clear() {
         this.employeeIdList.clear();
+        this.textField.setText(null);
     }
 
     @Override
@@ -73,4 +73,15 @@ public abstract class TextFilter implements Filter {
         return this.hBox;
     }
 
+    @Override
+    public void fillEmployeeIdList() throws SQLException {
+        if (this.textField.getText() != null) {
+            String request = "select employee_id from " + tableName() +
+                    " where " + columnName() + " = " + "'" + this.textField.getText() + "';";
+            ResultSet resultSet = dataBase.getResultSet(request);
+            while (resultSet.next()){
+                this.employeeIdList.add(resultSet.getInt(1));
+            }
+        }
+    }
 }

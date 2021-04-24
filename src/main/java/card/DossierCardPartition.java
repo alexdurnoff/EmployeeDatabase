@@ -8,9 +8,11 @@ import java.sql.SQLException;
 import java.util.List;
 
 public class DossierCardPartition extends EmployeeCardPartition{
+    private final List<EntityView> entityViewList;
 
     public DossierCardPartition(DataBase dataBase, int employeeId) throws SQLException {
         super(dataBase, employeeId);
+        this.entityViewList = new DossierEntityViewList(this.dataBase, this.employeeId).entityViewList();
     }
 
     @Override
@@ -20,6 +22,6 @@ public class DossierCardPartition extends EmployeeCardPartition{
 
     @Override
     protected List<EntityView> entityViewList() throws SQLException {
-        return new DossierEntityViewList(this.dataBase, this.employeeId).entityViewList();
+        return this.entityViewList;
     }
 }

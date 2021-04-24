@@ -1,5 +1,6 @@
 package entity.military;
 
+import javafx.util.StringConverter;
 import org.example.ui.EnumEntity;
 
 public enum AvailableCategoryEnumEntity implements EnumEntity {
@@ -34,7 +35,35 @@ public enum AvailableCategoryEnumEntity implements EnumEntity {
     }
 
     @Override
+    public EnumEntity[] valueArray() {
+        return values();
+    }
+
+    @Override
     public EnumEntity defaultValue() {
+        return DEFAULTCATEGORY;
+    }
+
+    @Override
+    public StringConverter<EnumEntity> stringConverter() {
+        return new StringConverter<EnumEntity>() {
+            @Override
+            public String toString(EnumEntity object) {
+                return object.title();
+            }
+
+            @Override
+            public EnumEntity fromString(String string) {
+                return entityByTitle(string);
+            }
+        };
+    }
+
+    public static AvailableCategoryEnumEntity entityByTitle(String title){
+        AvailableCategoryEnumEntity[] values = values();
+        for (AvailableCategoryEnumEntity value : values) {
+            if (value.title.equals(title)) return value;
+        }
         return DEFAULTCATEGORY;
     }
 }

@@ -11,11 +11,11 @@ public class DossierEntityView extends TextEntityView {
 
     @Override
     protected String labelText() {
-        return null;
+        return "Досье";
     }
 
     @Override
     protected String ORMCellTitle() {
-        return null;
+        return "dossier";
     }
 }

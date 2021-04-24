@@ -22,7 +22,7 @@ public class ImageEntityViewList {
         String request = "select * from images where employee_id = " + employeeId + ';';
         ResultSet resultSet = dataBase.getResultSet(request);
         while (resultSet.next()){
-            entityViewList.add(new ImageEntityView(resultSet.getString(1)));
+            entityViewList.add(new ImageEntityView(resultSet.getString(2)));
         }
         return entityViewList;
     }

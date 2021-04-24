@@ -12,10 +12,12 @@ import java.util.List;
  * Раздел информации в карточке сотрудника о его воинском учете.
  */
 public class MilitaryCardPartition extends EmployeeCardPartition{
+    private final List<EntityView> entityViewList;
 
 
     public MilitaryCardPartition(DataBase dataBase, int employeeId) throws SQLException {
         super(dataBase, employeeId);
+        this.entityViewList = new MilitaryEntityViewList(this.dataBase, this.employeeId).militaryEntityList();
     }
 
     @Override
@@ -25,6 +27,6 @@ public class MilitaryCardPartition extends EmployeeCardPartition{
 
     @Override
     protected List<EntityView> entityViewList() throws SQLException {
-        return new MilitaryEntityViewList(this.dataBase, this.employeeId).militaryEntityList();
+        return this.entityViewList;
     }
 }

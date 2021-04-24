@@ -8,18 +8,20 @@ import java.sql.SQLException;
 import java.util.List;
 
 public class ImageCardPartition extends EmployeeCardPartition {
+    private final List<EntityView> entityViewList;
 
     public ImageCardPartition(DataBase dataBase, int employeeId) throws SQLException {
         super(dataBase, employeeId);
+        this.entityViewList = new ImageEntityViewList(this.dataBase, this.employeeId).entityViewList();
     }
 
     @Override
     protected String table() {
-        return "image";
+        return "images";
     }
 
     @Override
     protected List<EntityView> entityViewList() throws SQLException {
-        return new ImageEntityViewList(this.dataBase, this.employeeId).entityViewList();
+        return this.entityViewList;
     }
 }

@@ -31,7 +31,7 @@ public abstract class EnumFilter implements Filter{
         this.cancelButton = new Button("Отмена");
         this.hBox = new HBox();
         this.choiceBox = new ChoiceBox<>();
-        this.choiceBox.getItems().addAll(Arrays.asList(enumEntity.values()));
+        this.choiceBox.getItems().addAll(Arrays.asList(enumEntity.valueArray()));
         this.choiceBox.setValue(enumEntity.defaultValue());
     }
 
@@ -52,14 +52,7 @@ public abstract class EnumFilter implements Filter{
 
 
     @Override
-    public List<Integer> employeeIdList() throws SQLException {
-        String request = "select employee_id from " + tableName() +
-                " where " + columnName() + " = " + "'"
-                + this.choiceBox.getValue().title() + "';";
-        ResultSet resultSet = dataBase.getResultSet(request);
-        while (resultSet.next()){
-            this.employeeIdList.add(resultSet.getInt(1));
-        }
+    public List<Integer> employeeIdList() {
         return employeeIdList;
     }
 
@@ -76,10 +69,25 @@ public abstract class EnumFilter implements Filter{
     @Override
     public void clear() {
         this.employeeIdList.clear();
+        this.choiceBox.setValue(enumEntity.defaultValue());
     }
 
     @Override
     public HBox hbox() {
         return this.hBox;
+    }
+
+    @Override
+    public void fillEmployeeIdList() throws SQLException {
+        if (this.choiceBox.getValue() != enumEntity.defaultValue()) {
+            String request = "select employee_id from " + tableName() +
+                    " where " + columnName() + " = " + "'"
+                    + this.choiceBox.getValue().title() + "';";
+            ResultSet resultSet = dataBase.getResultSet(request);
+            while (resultSet.next()){
+                this.employeeIdList.add(resultSet.getInt(1));
+            }
+        }
+
     }
 }

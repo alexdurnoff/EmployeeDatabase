@@ -50,25 +50,26 @@ public class ContractAgreement implements EmploymentAgreement {
     public void addToGridPane(GridPane gridPane, int rowNumber) {
         Label label = label();
         DatePickerFrom datePickerFrom = new DatePickerFrom(this.localDateFrom);
+        datePickerFrom.setOnAction(ae -> this.localDateFrom = datePickerFrom.getValue());
         DatePickerTo datePickerTo = new DatePickerTo(this.localDateTO);
+        datePickerTo.setOnAction(ae -> this.localDateTO = datePickerTo.getValue());
         gridPane.add(label, 0, rowNumber);
         gridPane.add(choiceBox, 1, rowNumber);
         gridPane.add(datePickerFrom, 2, rowNumber);
         gridPane.add(datePickerTo, 3, rowNumber);
-        choiceBox.setOnAction(ae -> {
+        /*choiceBox.setOnAction(ae -> {
             gridPane.getChildren().remove(label);
             gridPane.getChildren().remove(choiceBox);
             gridPane.getChildren().remove(datePickerFrom);
             gridPane.getChildren().remove(datePickerTo);
             choiceBox.getValue().addToGridPane(gridPane,rowNumber);
-        });
-
-
+        });*/
 
     }
 
     @Override
     public String requestPart() {
-        return null;
+        return "agreement = 'договор подряда', date_from = '" +
+                localDateFrom + "', date_to = '" + localDateTO + "'";
     }
 }

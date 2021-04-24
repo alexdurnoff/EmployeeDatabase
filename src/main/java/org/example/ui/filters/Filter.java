@@ -24,7 +24,7 @@ public interface Filter {
      * Возвращает идентификаторы сотрудников.
      * @return List<Integer>> - список идентификаторов сотрудников.
      */
-    List<Integer> employeeIdList() throws SQLException;
+    List<Integer> employeeIdList() ;
 
     /**
      * Кнопка "Применить". При нажатии на эту кнопку панель списка будет забирать
@@ -55,5 +55,10 @@ public interface Filter {
      * Название фильра. Для Label в начале строки
      */
     String labelName();
+
+    /**
+     * Заполнение списка идентификаторов. Отдельным методом, чтобы не отдавать.
+     */
+    void fillEmployeeIdList() throws SQLException;
 
 }

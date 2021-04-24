@@ -1,7 +1,7 @@
 package org.example.ui.filters;
 
 import dao.DataBase;
-import entity.job.agreement.DivisionEnumEntity;
+import entity.job.DivisionEnumEntity;
 
 
 public class DivisionFilter extends EnumFilter{

@@ -24,7 +24,7 @@ public class DocumentType implements EntityView {
 
     @Override
     public String requestPart() {
-        return "set document_type = " +
+        return "document_type = " +
                 "'" +
                 this.choiceBox.getValue() +
                 "'";

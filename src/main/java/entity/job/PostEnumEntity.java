@@ -1,5 +1,6 @@
 package entity.job;
 
+import javafx.util.StringConverter;
 import org.example.ui.EnumEntity;
 
 public enum PostEnumEntity implements EnumEntity {
@@ -79,7 +80,36 @@ public enum PostEnumEntity implements EnumEntity {
     }
 
     @Override
+    public EnumEntity[] valueArray() {
+        return values();
+    }
+
+    @Override
     public EnumEntity defaultValue() {
+        return DEFAULTPOST;
+    }
+
+    @Override
+    public StringConverter<EnumEntity> stringConverter() {
+        return new StringConverter<EnumEntity>() {
+            @Override
+            public String toString(EnumEntity object) {
+                return object.title();
+            }
+
+            @Override
+            public EnumEntity fromString(String string) {
+                return entityByTitle(string);
+            }
+        };
+    }
+
+    public static EnumEntity entityByTitle(String title){
+        PostEnumEntity[] values = values();
+        for (PostEnumEntity value : values) {
+            if (value.title.equals(title)) return value;
+
+        }
         return DEFAULTPOST;
     }
 }

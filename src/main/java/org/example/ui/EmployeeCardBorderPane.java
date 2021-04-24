@@ -6,7 +6,7 @@ import javafx.scene.layout.BorderPane;
 
 public class EmployeeCardBorderPane extends BorderPane {
 
-    public EmployeeCardBorderPane(ScrollPane scrollPane, EmployeeCard employeeCard) {
+    public EmployeeCardBorderPane(CardPartitionsScrollPane scrollPane, EmployeeCard employeeCard) {
         this.setTop(new HeaderEmployeeHBox(employeeCard));
         this.setCenter(scrollPane);
     }

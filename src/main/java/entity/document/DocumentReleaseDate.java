@@ -30,7 +30,7 @@ public class DocumentReleaseDate implements EntityView {
 
     @Override
     public String requestPart() {
-        return "set document_release_date = " +
+        return "document_release_date = " +
                 "'" +
                 this.datePicker.getValue().toString() +
                 "'";

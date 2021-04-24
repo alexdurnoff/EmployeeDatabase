@@ -1,25 +1,22 @@
 package entity.certificate;
 
 import org.example.ui.RadioButtonEntityView;
+import org.example.ui.TextEntityView;
 
-public class Qualification extends RadioButtonEntityView {
+public class Qualification extends TextEntityView {
 
-    public Qualification(String yesOrNo, String content) {
-        super(yesOrNo, content);
+
+    protected Qualification(String textContent) {
+        super(textContent);
     }
 
     @Override
-    protected String labelHeader() {
-        return "присвоена категория/квалификация";
+    protected String labelText() {
+        return "Присвоена квалификация";
     }
 
     @Override
-    protected String column1Header() {
-        return "qualification_yes_or_no";
-    }
-
-    @Override
-    protected String column2Header() {
+    protected String ORMCellTitle() {
         return "qualification";
     }
 }

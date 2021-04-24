@@ -1,5 +1,6 @@
 package entity.educationandfamily;
 
+import javafx.util.StringConverter;
 import org.example.ui.EnumEntity;
 
 public enum Education implements EnumEntity {
@@ -35,11 +36,31 @@ public enum Education implements EnumEntity {
     }
 
     @Override
+    public EnumEntity[] valueArray() {
+        return values();
+    }
+
+    @Override
     public EnumEntity defaultValue() {
         return DEFAULT;
     }
 
-    public static Education educationByTitle(String title){
+    @Override
+    public StringConverter<EnumEntity> stringConverter() {
+        return new StringConverter<EnumEntity>() {
+            @Override
+            public String toString(EnumEntity object) {
+                return object.title();
+            }
+
+            @Override
+            public EnumEntity fromString(String string) {
+                return entityByTitle(string);
+            }
+        };
+    }
+
+    public static Education entityByTitle(String title){
         Education[] values = values();
         for (Education value : values) {
             if (value.title.equals(title)) return value;

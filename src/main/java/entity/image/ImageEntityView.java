@@ -20,7 +20,7 @@ public class ImageEntityView implements EntityView {
 
     @Override
     public void addToGridPane(GridPane gridPane, int rowNumber) {
-        ImageView imageView = new ImageView(filePath);
+        ImageView imageView = new ImageView("file://" + filePath);
         Button fileChooseButton = new Button("выбрать фотографию");
         fileChooseButton.setOnAction(ae -> {
             try {
@@ -30,11 +30,12 @@ public class ImageEntityView implements EntityView {
             } catch (Exception ignored) {
             }
         });
-
+        gridPane.add(imageView, 0, rowNumber);
+        gridPane.add(fileChooseButton, 1, rowNumber);
     }
 
     @Override
     public String requestPart() {
-        return "set image = " + "'" + this.textField.getText() + "'";
+        return "image = " + "'" + this.textField.getText() + "'";
     }
 }

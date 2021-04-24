@@ -42,14 +42,7 @@ public abstract class DateFilter implements Filter {
     protected abstract String columnName();
 
     @Override
-    public List<Integer> employeeIdList() throws SQLException {
-        String request = "select employee_id from " + tableName() +
-                " where " + columnName() + " = " +
-                "'" + this.datePicker.getValue().toString() + "';";
-        ResultSet resultSet = dataBase.getResultSet(request);
-        while (resultSet.next()){
-            this.employeeIdList.add(resultSet.getInt(1));
-        }
+    public List<Integer> employeeIdList() {
         return employeeIdList;
     }
 
@@ -66,6 +59,7 @@ public abstract class DateFilter implements Filter {
     @Override
     public void clear() {
         this.employeeIdList.clear();
+        this.datePicker.setValue(null);
     }
 
     @Override
@@ -73,4 +67,17 @@ public abstract class DateFilter implements Filter {
         return this.hBox;
     }
 
+    @Override
+    public void fillEmployeeIdList() throws SQLException {
+        if (this.datePicker.getValue() != null) {
+            String request = "select employee_id from " + tableName() +
+                    " where " + columnName() + " = " +
+                    "'" + this.datePicker.getValue().toString() + "';";
+            ResultSet resultSet = dataBase.getResultSet(request);
+            while (resultSet.next()){
+                this.employeeIdList.add(resultSet.getInt(1));
+            }
+        }
+
+    }
 }

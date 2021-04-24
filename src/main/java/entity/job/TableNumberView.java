@@ -54,7 +54,7 @@ public class TableNumberView implements EntityView {
 
     @Override
     public String requestPart() {
-        return "set table_number = " + this.value();
+        return "table_number = " + this.value();
     }
 
     public boolean test(TableNumberView tableNumberView) {

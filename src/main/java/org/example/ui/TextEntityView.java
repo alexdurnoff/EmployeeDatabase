@@ -32,10 +32,14 @@ public abstract class TextEntityView implements EntityView {
 
     @Override
     public String requestPart() {
-        return "set " +
-                ORMCellTitle() +
-                "'" +
-                this.textField.getText() +
+        return  ORMCellTitle() +
+                " = '" +
+                value() +
                 "'";
+    }
+
+    private String value(){
+        if (this.textField.getText() == null) return "";
+        return this.textField.getText();
     }
 }

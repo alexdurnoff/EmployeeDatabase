@@ -1,5 +1,6 @@
 package entity.military;
 
+import javafx.util.StringConverter;
 import org.example.ui.EnumEntity;
 
 public enum MilitaryRankEnumEntity implements EnumEntity {
@@ -46,7 +47,39 @@ public enum MilitaryRankEnumEntity implements EnumEntity {
     }
 
     @Override
+    public EnumEntity[] valueArray() {
+        return values();
+    }
+
+    @Override
     public EnumEntity defaultValue() {
         return DEFAULTRANK;
     }
+
+    @Override
+    public StringConverter<EnumEntity> stringConverter() {
+        return new StringConverter<EnumEntity>() {
+            @Override
+            public String toString(EnumEntity object) {
+                return object.title();
+            }
+
+            @Override
+            public EnumEntity fromString(String string) {
+                return entityByTitle(string);
+            }
+        };
+    }
+
+    public static MilitaryRankEnumEntity entityByTitle(String title){
+        MilitaryRankEnumEntity[] values = values();
+        for (MilitaryRankEnumEntity value : values) {
+            if (value.title.equals(title)) return value;
+        }
+        return DEFAULTRANK;
+    }
+
+
+
+
 }

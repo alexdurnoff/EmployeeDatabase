@@ -1,21 +1,21 @@
-package entity.document;
+package entity.employee;
 
 import entity.EntityView;
 import org.example.ui.TextEntityView;
 
 public class EmployeeName extends TextEntityView {
 
-    protected EmployeeName(String textContent) {
+    public EmployeeName(String textContent) {
         super(textContent);
     }
 
     @Override
     protected String labelText() {
-        return "Ф.И.О";
+        return "Имя";
     }
 
     @Override
     protected String ORMCellTitle() {
-        return "employee_name";
+        return "name";
     }
 }

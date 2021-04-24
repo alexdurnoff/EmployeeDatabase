@@ -22,7 +22,7 @@ public class DossierEntityViewList {
         String request = "select * from dossier where employee_id = " + employeeId +';';
         ResultSet resultSet = dataBase.getResultSet(request);
         while (resultSet.next()) {
-            this.entityViewList.add(new DossierEntityView(resultSet.getString(1)));
+            this.entityViewList.add(new DossierEntityView(resultSet.getString(2)));
         }
         return this.entityViewList;
     }

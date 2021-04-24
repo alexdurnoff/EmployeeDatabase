@@ -24,22 +24,22 @@ public class EducationAndFamilyEntityViewList {
         String request = "select * from education_and_family where employee_id = " + employeeId;
         ResultSet resultSet = dataBase.getResultSet(request);
         while (resultSet.next()){
-            this.entityViewList.add(new EducationAndFamylyHeader());
-            this.entityViewList.add(new EnumEntityView(Education.educationByTitle(resultSet.getString(1))));
-            this.entityViewList.add(new EducationInstitute(resultSet.getString(2)));
+            //this.entityViewList.add(new EducationAndFamylyHeader());
+            this.entityViewList.add(new EnumEntityView(Education.entityByTitle(resultSet.getString(2))));
+            this.entityViewList.add(new EducationInstitute(resultSet.getString(3)));
             this.entityViewList.add(new LanguageEntityView(
-                    resultSet.getString(3),
-                    resultSet.getString(4))
+                    resultSet.getString(4),
+                    resultSet.getString(5))
             );
             this.entityViewList.add(new ChildrenEntityView(
-                    resultSet.getString(5),
-                    resultSet.getString(6))
+                    resultSet.getString(6),
+                    resultSet.getString(7))
             );
             this.entityViewList.add(new InvalidEntityView(
-                    resultSet.getString(7),
-                    resultSet.getString(8))
+                    resultSet.getString(8),
+                    resultSet.getString(9))
             );
-            this.entityViewList.add(new LivingAreaEntityView(resultSet.getString(9)));
+            //this.entityViewList.add(new LivingAreaEntityView(resultSet.getString(9)));
         }
         return entityViewList;
     }

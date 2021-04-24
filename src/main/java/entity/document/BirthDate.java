@@ -26,7 +26,7 @@ public class BirthDate implements EntityView {
 
     @Override
     public String requestPart() {
-        return "set birth_date = " +
+        return "birth_date = " +
                 "'" +
                 this.datePicker.getValue().toString() +
                 "'";

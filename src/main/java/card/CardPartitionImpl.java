@@ -9,31 +9,25 @@ import javafx.scene.layout.GridPane;
 import java.sql.SQLException;
 import java.util.List;
 
-/**
- * Абстрактный класс. Раздел информации о сотруднике в карточке.
- */
-public abstract class EmployeeCardPartition implements CardPartition{
-    protected final int employeeId;
+public class CardPartitionImpl implements CardPartition{
+    private final int employeeId;
     private final String table;
-    protected final DataBase dataBase;
+    private final DataBase dataBase;
     private final List<EntityView> entityViewList;
 
-    public EmployeeCardPartition(DataBase dataBase, int employeeId) throws SQLException {
-        this.dataBase = dataBase;
+    public CardPartitionImpl(int employeeId, String table, DataBase dataBase, List<EntityView> entityViewList) {
         this.employeeId = employeeId;
-        this.table = table();
-        this.entityViewList = entityViewList();
+        this.table = table;
+        this.dataBase = dataBase;
+        this.entityViewList = entityViewList;
     }
 
-    protected abstract String table();
-
-    protected abstract List<EntityView> entityViewList() throws SQLException;
 
     @Override
     public Node node() throws SQLException {
         GridPane gridPane = new GridPane();
         int rowNumber = 0;
-        for (EntityView entityView : entityViewList()) {
+        for (EntityView entityView : entityViewList) {
             entityView.addToGridPane(gridPane, rowNumber);
             rowNumber++;
         }

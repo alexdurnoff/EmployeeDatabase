@@ -11,8 +11,11 @@ import java.util.List;
  * Раздел информации в катрочке сотрудника о его работе.
  */
 public class JobCardPartition extends EmployeeCardPartition{
+    private final List<EntityView> entityViewList;
+
     public JobCardPartition(DataBase dataBase, int employeeId) throws SQLException {
         super(dataBase, employeeId);
+        this.entityViewList = new JobEntityViewList(this.dataBase,this.employeeId).jobEntityViewList();
     }
 
     @Override
@@ -22,6 +25,6 @@ public class JobCardPartition extends EmployeeCardPartition{
 
     @Override
     protected List<EntityView> entityViewList() throws SQLException {
-        return new JobEntityViewList(this.dataBase,this.employeeId).jobEntityViewList();
+        return this.entityViewList;
     }
 }

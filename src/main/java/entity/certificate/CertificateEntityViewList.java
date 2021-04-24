@@ -23,12 +23,10 @@ public class CertificateEntityViewList {
         String request = "select * from certificate where employee_id = " + employeeId + ';';
         ResultSet resultSet = dataBase.getResultSet(request);
         while (resultSet.next()){
-            this.entityViewList.add(new CertificateCity(resultSet.getString(1)));
-            this.entityViewList.add(new CertificateOrganization(resultSet.getString(2)));
+            this.entityViewList.add(new CertificateCity(resultSet.getString(2)));
+            this.entityViewList.add(new CertificateOrganization(resultSet.getString(3)));
             this.entityViewList.add(new Qualification(
-                    resultSet.getString(3),
-                    resultSet.getString(4))
-            );
+                    resultSet.getString(4)));
         }
         return entityViewList;
     }

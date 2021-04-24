@@ -82,7 +82,7 @@ public class GettingStartedView implements Predicate<GettingStartedView>, Entity
 
     @Override
     public String requestPart() {
-        return "set getting_started = " +
+        return "getting_started = " +
                 "'" +
                 userChoice() +
                 "'";

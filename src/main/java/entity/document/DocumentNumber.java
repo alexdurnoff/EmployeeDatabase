@@ -31,6 +31,6 @@ public class DocumentNumber implements EntityView {
 
     @Override
     public String requestPart() {
-        return "set document_number = " + number;
+        return "document_number = " + number;
     }
 }

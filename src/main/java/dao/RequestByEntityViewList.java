@@ -23,15 +23,16 @@ public class RequestByEntityViewList {
     public String request(){
         StringBuilder stringBuilder = new StringBuilder();
         stringBuilder.append("update ")
-                .append(table);
+                .append(table)
+                .append(" set");
         for (EntityView entityView : entityViewList) {
             stringBuilder.append(' ');
             stringBuilder.append(entityView.requestPart());
             stringBuilder.append(",");
         }
         String string = stringBuilder.toString();
-        string = string.substring(0, string.length()-1);
-        string = string + "where employee_id = " + employeeId + ';';
+        string = string.substring(0, string.length()-1);//Убрали последнюю запятую
+        string = string + " where employee_id = " + employeeId + ';';
         return string;
     }
 }

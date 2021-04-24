@@ -15,7 +15,7 @@ public class InvalidEntityView extends RadioButtonEntityView {
 
     @Override
     protected String column1Header() {
-        return "invalid_yes_or_now";
+        return "invalid_yes_or_no";
     }
 
     @Override

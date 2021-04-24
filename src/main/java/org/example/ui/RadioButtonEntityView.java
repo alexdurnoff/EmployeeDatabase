@@ -25,13 +25,18 @@ public abstract class RadioButtonEntityView implements EntityView {
         this.radioButtonNo = new RadioButton("Нет");
         radioButtonNo.setOnAction(ae -> {
             if (radioButtonNo.isSelected()) {
-                textField.setText("");
+                textField.setText("null");
                 textField.setEditable(false);
             }
         });
         this.toggleGroup = new ToggleGroup();
         toggleGroup.getToggles().add(radioButtonYes);
         toggleGroup.getToggles().add(radioButtonNo);
+        if (yesOrNo.equals("Да")) {
+            toggleGroup.selectToggle(radioButtonYes);
+        } else {
+            toggleGroup.selectToggle(radioButtonNo);
+        }
     }
 
     @Override
@@ -70,7 +75,7 @@ public abstract class RadioButtonEntityView implements EntityView {
 
     @Override
     public String requestPart() {
-        return "set " + column1Header() + " = " + yesOrNo() + ',' +
-                "set " + column2Header() + " = " + "'" + textField.getText() + "'";
+        return   column1Header() + " = '" + yesOrNo() + "', " +
+                 column2Header() + " = " + "'" + textField.getText() + "'";
     }
 }
