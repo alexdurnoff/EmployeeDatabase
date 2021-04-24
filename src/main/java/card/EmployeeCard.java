@@ -18,7 +18,7 @@ public class EmployeeCard {
     private final EmployeeListVbox employeeListVbox;
 
 
-    public EmployeeCard(int employeeId, DataBase dataBase, EmployeeListVbox employeeListVbox) {
+    public EmployeeCard(int employeeId, DataBase dataBase, EmployeeListVbox employeeListVbox) throws SQLException {
         this.employeeId = employeeId;
         this.cardPartitions = new EmployeeCardPartitions(dataBase, employeeId);
         this.employeeListVbox = employeeListVbox;

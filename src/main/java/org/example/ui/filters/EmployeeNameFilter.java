@@ -21,4 +21,5 @@ public class EmployeeNameFilter extends TextFilter{
     protected String columnName() {
         return "name";
     }
+
 }

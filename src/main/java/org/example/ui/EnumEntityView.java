@@ -8,13 +8,11 @@ import javafx.util.StringConverter;
 
 public class EnumEntityView implements EntityView {
     private final EnumEntity entity;
-    private EnumEntity unit;
     protected final ChoiceBox<String> choiceBox;
 
     public EnumEntityView(EnumEntity entity) {
         this.entity = entity;
         this.choiceBox = new ChoiceBox<>();
-        System.out.println("choice box after constructor is " + choiceBox);
     }
 
     @Override
@@ -31,7 +29,6 @@ public class EnumEntityView implements EntityView {
 
     @Override
     public String requestPart() {
-        System.out.println("choice box before invoke request is " + choiceBox);
         try {
             return  entity.columnName() + " = '" +
                     choiceBox.getValue() + "'";
@@ -39,10 +36,5 @@ public class EnumEntityView implements EntityView {
             e.printStackTrace();
         }
         return null;
-    }
-
-    public String ownRequest(){
-        return  entity.columnName() + " = '" +
-                choiceBox.getValue() + "'";
     }
 }

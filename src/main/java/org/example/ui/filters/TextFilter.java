@@ -29,7 +29,7 @@ public abstract class TextFilter implements Filter {
         this.cancelButton = new Button("Отмена");
         this.hBox = new HBox();
         this.textField = new TextField();
-        this.hBox.getChildren().add(new Label("Фильтр"));
+        this.hBox.getChildren().add(new Label(labelName()));
         this.hBox.getChildren().add(textField);
         this.hBox.getChildren().add(applyButton);
         this.hBox.getChildren().add(cancelButton);
@@ -46,6 +46,7 @@ public abstract class TextFilter implements Filter {
      * @return String column name.
      */
     protected abstract String columnName();
+
 
     @Override
     public List<Integer> employeeIdList() {

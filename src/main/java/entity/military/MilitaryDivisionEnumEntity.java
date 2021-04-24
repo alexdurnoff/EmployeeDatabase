@@ -13,6 +13,7 @@ public enum MilitaryDivisionEnumEntity implements EnumEntity {
     private final String title;
 
     MilitaryDivisionEnumEntity(String title){
+        System.out.println("MilitaryDivision string in constructor is " + title);
         this.title = title;
     }
 

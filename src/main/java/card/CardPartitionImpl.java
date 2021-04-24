@@ -3,6 +3,8 @@ package card;
 import dao.DataBase;
 import dao.RequestByEntityViewList;
 import entity.EntityView;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.scene.Node;
 import javafx.scene.layout.GridPane;
 
@@ -13,13 +15,13 @@ public class CardPartitionImpl implements CardPartition{
     private final int employeeId;
     private final String table;
     private final DataBase dataBase;
-    private final List<EntityView> entityViewList;
+    private final ObservableList<EntityView> entityViewList;
 
     public CardPartitionImpl(int employeeId, String table, DataBase dataBase, List<EntityView> entityViewList) {
         this.employeeId = employeeId;
         this.table = table;
         this.dataBase = dataBase;
-        this.entityViewList = entityViewList;
+        this.entityViewList = FXCollections.observableList(entityViewList);
     }
 
 

@@ -17,6 +17,7 @@ public class DocumentTypeFilter extends TextFilter{
         return "document_type";
     }
 
+
     @Override
     public String labelName() {
         return "Фильр по типу документа";
