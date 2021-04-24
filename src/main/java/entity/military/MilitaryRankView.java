@@ -81,6 +81,11 @@ public enum MilitaryRankView implements EntityView, Predicate<MilitaryRankView> 
                 "'";
     }
 
+    @Override
+    public String insertRequestValue() {
+        return this.userChoice().title;
+    }
+
     /**
      * Выбранное пользователем значение.
      * @return - MilitaryRank, выбранное в ChoiceBox.

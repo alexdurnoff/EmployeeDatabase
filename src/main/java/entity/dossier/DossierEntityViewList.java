@@ -35,11 +35,7 @@ public class DossierEntityViewList {
      */
     public List<EntityView> defaultList() throws SQLException {
         this.entityViewList.clear();
-        String request = "select * from dossier where employee_id = " + employeeId +';';
-        ResultSet resultSet = dataBase.getResultSet(request);
-        while (resultSet.next()) {
-            this.entityViewList.add(new DossierEntityView(""));
-        }
+        this.entityViewList.add(new DossierEntityView(""));
         return this.entityViewList;
     }
 }

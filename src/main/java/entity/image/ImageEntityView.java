@@ -38,4 +38,9 @@ public class ImageEntityView implements EntityView {
     public String requestPart() {
         return "image = " + "'" + this.textField.getText() + "'";
     }
+
+    @Override
+    public String insertRequestValue() {
+        return this.textField.getText();
+    }
 }

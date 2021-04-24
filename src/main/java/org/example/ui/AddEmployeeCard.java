@@ -12,4 +12,16 @@ public class AddEmployeeCard extends EmployeeCard {
         super(employeeId, dataBase, employeeListVbox);
         this.cardPartitions = new DefaultCardPartitions(dataBase, employeeId);
     }
+
+    @Override
+    protected void update() throws SQLException {
+        this.cardPartitions.cardPartitionList().forEach(cardPartition -> {
+            try {
+                cardPartition.insertNewEmployee();
+            } catch (SQLException exception) {
+                exception.printStackTrace();
+            }
+        });
+        this.setSaved(true);
+    }
 }

@@ -88,6 +88,11 @@ public class GettingStartedView implements Predicate<GettingStartedView>, Entity
                 "'";
     }
 
+    @Override
+    public String insertRequestValue() {
+        return userChoice();
+    }
+
     public String userChoice() {
         return this.datePicker.getValue().toString();//Пока так.
     }

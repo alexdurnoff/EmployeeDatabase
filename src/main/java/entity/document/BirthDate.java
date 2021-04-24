@@ -31,4 +31,9 @@ public class BirthDate implements EntityView {
                 this.datePicker.getValue().toString() +
                 "'";
     }
+
+    @Override
+    public String insertRequestValue() {
+        return this.datePicker.getValue().toString();
+    }
 }

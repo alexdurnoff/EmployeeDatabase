@@ -2,6 +2,7 @@ package dao;
 
 import entity.EntityView;
 
+import java.sql.SQLException;
 import java.util.List;
 
 /**
@@ -34,5 +35,22 @@ public class RequestByEntityViewList {
         string = string.substring(0, string.length()-1);//Убрали последнюю запятую
         string = string + " where employee_id = " + employeeId + ';';
         return string;
+    }
+
+    /**
+     * Метод создания запроса для добавления нового сотрудника
+     * @return String request
+     */
+    public String insertRequest() throws SQLException {
+        StringBuilder stringBuilder = new StringBuilder();
+        stringBuilder.append("insert into ")
+                .append(table)
+                .append(" values (");
+        for (EntityView entityView : entityViewList) {
+            stringBuilder.append(' ');
+            stringBuilder.append(entityView.insertRequestValue());
+            stringBuilder.append(",");
+        }
+        return null;
     }
 }

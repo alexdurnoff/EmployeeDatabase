@@ -22,4 +22,6 @@ public class ChildrenEntityView extends RadioButtonEntityView {
     protected String column2Header() {
         return "children";
     }
+
+
 }

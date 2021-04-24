@@ -13,4 +13,9 @@ import java.sql.SQLException;
 public interface CardPartition {
     Node node() throws SQLException;
     void update() throws SQLException;
+
+    /**
+     * Добавление нового сотрудника.
+     */
+    void insertNewEmployee() throws SQLException;
 }

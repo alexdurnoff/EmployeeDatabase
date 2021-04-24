@@ -42,4 +42,9 @@ public abstract class TextEntityView implements EntityView {
         if (this.textField.getText() == null) return "";
         return this.textField.getText();
     }
+
+    @Override
+    public String insertRequestValue() {
+        return this.value();
+    }
 }

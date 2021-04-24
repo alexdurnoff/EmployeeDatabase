@@ -60,7 +60,7 @@ public class EmployeeCard {
         this.saved = saved;
     }
 
-    private void update() throws SQLException {
+    protected void update() throws SQLException {
         this.cardPartitions.cardPartitionList().forEach(cardPartition -> {
             try {
                 cardPartition.update();

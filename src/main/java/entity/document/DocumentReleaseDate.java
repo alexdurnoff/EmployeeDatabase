@@ -35,4 +35,9 @@ public class DocumentReleaseDate implements EntityView {
                 this.datePicker.getValue().toString() +
                 "'";
     }
+
+    @Override
+    public String insertRequestValue() {
+        return this.datePicker.getValue().toString();
+    }
 }

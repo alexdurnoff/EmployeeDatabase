@@ -110,6 +110,11 @@ public enum PostView implements Predicate<PostView>, EntityView {
                 "'";
     }
 
+    @Override
+    public String insertRequestValue() {
+        return this.userChoice().title;
+    }
+
     public PostView userChoice(){
         return this.choiceBox.getValue();
     }

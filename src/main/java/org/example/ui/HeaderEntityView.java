@@ -20,4 +20,9 @@ public abstract class HeaderEntityView implements EntityView {
     public String requestPart() {
         return "";
     }
+
+    @Override
+    public String insertRequestValue() {
+        return null;
+    }
 }

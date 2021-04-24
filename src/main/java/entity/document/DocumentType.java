@@ -29,4 +29,9 @@ public class DocumentType implements EntityView {
                 this.choiceBox.getValue() +
                 "'";
     }
+
+    @Override
+    public String insertRequestValue() {
+        return this.choiceBox.getValue();
+    }
 }

@@ -73,4 +73,9 @@ public enum MilitaryDivision implements EntityView {
                 this.userChoice().title +
                 "'";
     }
+
+    @Override
+    public String insertRequestValue() {
+        return this.userChoice().title;
+    }
 }

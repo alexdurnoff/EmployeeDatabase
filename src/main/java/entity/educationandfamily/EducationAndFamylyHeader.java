@@ -12,4 +12,9 @@ public class EducationAndFamylyHeader implements entity.EntityView {
     public String requestPart() {
         return null;
     }
+
+    @Override
+    public String insertRequestValue() {
+        return null;
+    }
 }

@@ -77,6 +77,11 @@ public enum AvailableCategory implements EntityView, Predicate<AvailableCategory
     }
 
     @Override
+    public String insertRequestValue() {
+        return null;
+    }
+
+    @Override
     public boolean test(AvailableCategory availableCategory) {
         if (availableCategory == DEFAULTCATEGORY) return true;
         return this == availableCategory;

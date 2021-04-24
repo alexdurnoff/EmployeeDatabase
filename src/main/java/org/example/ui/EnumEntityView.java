@@ -37,4 +37,9 @@ public class EnumEntityView implements EntityView {
         }
         return null;
     }
+
+    @Override
+    public String insertRequestValue() {
+        return choiceBox.getValue();
+    }
 }

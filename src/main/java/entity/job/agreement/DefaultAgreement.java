@@ -5,6 +5,8 @@ import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.Label;
 import javafx.scene.layout.GridPane;
 
+import java.time.LocalDate;
+
 public class DefaultAgreement implements EmploymentAgreement {
     private final ChoiceBox<EmploymentAgreement> choiceBox;
 
@@ -56,5 +58,11 @@ public class DefaultAgreement implements EmploymentAgreement {
     @Override
     public String requestPart() {
         return null;
+    }
+
+    @Override
+    public String insertRequestValue() {
+        return "трудовое соглашение, " +
+                LocalDate.now() + ", " + LocalDate.now();
     }
 }

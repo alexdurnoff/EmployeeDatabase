@@ -18,4 +18,5 @@ public class Adress extends TextEntityView {
     protected String ORMCellTitle() {
         return "home_adress";
     }
+
 }

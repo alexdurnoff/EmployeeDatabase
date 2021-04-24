@@ -72,4 +72,11 @@ public class ContractAgreement implements EmploymentAgreement {
         return "agreement = 'договор подряда', date_from = '" +
                 localDateFrom + "', date_to = '" + localDateTO + "'";
     }
+
+    @Override
+    public String insertRequestValue() {
+        return this.choiceBox.getValue().title() +
+                ", " + localDateFrom.toString() +
+                ", " + localDateTO.toString();
+    }
 }

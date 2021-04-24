@@ -46,4 +46,15 @@ public class CardPartitionImpl implements CardPartition{
                 ).request()
         );
     }
+
+    @Override
+    public void insertNewEmployee() throws SQLException {
+        this.dataBase.executeUpdateRequest(
+                new RequestByEntityViewList(
+                        table,
+                        employeeId,
+                        entityViewList
+                ).insertRequest()
+        );
+    }
 }
