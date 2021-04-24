@@ -1,7 +1,6 @@
 package card;
 
 import dao.DataBase;
-import entity.EntityView;
 import entity.certificate.CertificateEntityViewList;
 import entity.contacts.ContactsEntityViewList;
 import entity.document.DocumentEntityViewList;
@@ -12,28 +11,26 @@ import entity.job.JobEntityViewList;
 import entity.military.MilitaryEntityViewList;
 
 import java.sql.SQLException;
-import java.util.ArrayList;
-import java.util.List;
 
-public class EmployeeCardPartitions implements CardPartitions{
-    protected final DataBase dataBase;
-    protected final int employeeId;
-    protected final List<CardPartition> cardPartitionList;
 
-    public EmployeeCardPartitions(DataBase dataBase, int employeeId) throws SQLException {
-        this.dataBase = dataBase;
-        this.employeeId = employeeId;
-        this.cardPartitionList = new ArrayList<>();
-        setupEntityViewList();
+/**
+ * Класс будет возвращать дефолтный список CardPartitions
+ */
+public class DefaultCardPartitions extends EmployeeCardPartitions {
+    public DefaultCardPartitions(DataBase dataBase, int employeeId) throws SQLException {
+        super(dataBase, employeeId);
+        this.cardPartitionList.clear();
+        this.setupEntityViewList();
     }
 
+    @Override
     protected void setupEntityViewList() throws SQLException {
         cardPartitionList.add(
                 new CardPartitionImpl(
                         employeeId,
                         "images",
                         dataBase,
-                        new ImageEntityViewList(dataBase, employeeId).entityViewList()
+                        new ImageEntityViewList(dataBase, employeeId).defaultList()
                 )
         );
         cardPartitionList.add(
@@ -41,7 +38,7 @@ public class EmployeeCardPartitions implements CardPartitions{
                         employeeId,
                         "documents",
                         dataBase,
-                        new DocumentEntityViewList(dataBase, employeeId).entityViewList()
+                        new DocumentEntityViewList(dataBase, employeeId).defaultList()
                 )
         );
         cardPartitionList.add(
@@ -49,7 +46,7 @@ public class EmployeeCardPartitions implements CardPartitions{
                         employeeId,
                         "contacts",
                         dataBase,
-                        new ContactsEntityViewList(dataBase, employeeId).contactsEntityViewList()
+                        new ContactsEntityViewList(dataBase, employeeId).defaultList()
                 )
         );
         cardPartitionList.add(
@@ -57,7 +54,7 @@ public class EmployeeCardPartitions implements CardPartitions{
                         employeeId,
                         "jobs",
                         dataBase,
-                        new JobEntityViewList(dataBase, employeeId).jobEntityViewList()
+                        new JobEntityViewList(dataBase, employeeId).defaultList()
                 )
         );
         cardPartitionList.add(
@@ -65,7 +62,7 @@ public class EmployeeCardPartitions implements CardPartitions{
                         employeeId,
                         "military",
                         dataBase,
-                        new MilitaryEntityViewList(dataBase, employeeId).militaryEntityList()
+                        new MilitaryEntityViewList(dataBase, employeeId).defaultList()
                 )
         );
         cardPartitionList.add(
@@ -73,7 +70,7 @@ public class EmployeeCardPartitions implements CardPartitions{
                         employeeId,
                         "education_and_family",
                         dataBase,
-                        new EducationAndFamilyEntityViewList(dataBase, employeeId).entityViewList()
+                        new EducationAndFamilyEntityViewList(dataBase, employeeId).defaultList()
                 )
         );
         cardPartitionList.add(
@@ -81,7 +78,7 @@ public class EmployeeCardPartitions implements CardPartitions{
                         employeeId,
                         "certificate",
                         dataBase,
-                        new CertificateEntityViewList(dataBase, employeeId).entityViewList()
+                        new CertificateEntityViewList(dataBase, employeeId).defaultList()
                 )
         );
         cardPartitionList.add(
@@ -89,13 +86,8 @@ public class EmployeeCardPartitions implements CardPartitions{
                         employeeId,
                         "dossier",
                         dataBase,
-                        new DossierEntityViewList(dataBase, employeeId).entityViewList()
+                        new DossierEntityViewList(dataBase, employeeId).defaultList()
                 )
         );
-    }
-
-    @Override
-    public List<CardPartition> cardPartitionList() throws SQLException {
-        return cardPartitionList;
     }
 }

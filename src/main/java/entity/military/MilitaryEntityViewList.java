@@ -20,6 +20,7 @@ public class MilitaryEntityViewList {
     }
 
     public List<EntityView> militaryEntityList() throws SQLException {
+        this.militaryEntityViewList.clear();
         String request = "select * from military where employee_id = " + employeeId;
         ResultSet resultSet = dataBase.getResultSet(request);
         while (resultSet.next()){
@@ -38,6 +39,35 @@ public class MilitaryEntityViewList {
                     new EnumEntityView(MilitaryRegistrationEnumEntity.entityByTitle(resultSet.getString(7)))
             );
             this.militaryEntityViewList.add(new RegistrationMark(resultSet.getString(8)));
+        }
+        return this.militaryEntityViewList;
+    }
+
+    /**
+     * Список для добавления нового сотрудника
+     * @return List<EntityView>
+     * @throws SQLException - может генерировать исключение при работе с базой.
+     */
+    public List<EntityView> defaultList() throws SQLException {
+        this.militaryEntityViewList.clear();
+        String request = "select * from military where employee_id = " + employeeId;
+        ResultSet resultSet = dataBase.getResultSet(request);
+        while (resultSet.next()){
+            this.militaryEntityViewList.add(
+                    new EnumEntityView(MilitaryRankEnumEntity.entityByTitle(""))
+            );
+            this.militaryEntityViewList.add(
+                    new EnumEntityView(MilitaryDivisionEnumEntity.entityByTitle(""))
+            );
+            this.militaryEntityViewList.add(new VUSCodeName(""));
+            this.militaryEntityViewList.add(
+                    new EnumEntityView(AvailableCategoryEnumEntity.entityByTitle(""))
+            );
+            this.militaryEntityViewList.add(new MilitaryCommissariat(""));
+            this.militaryEntityViewList.add(
+                    new EnumEntityView(MilitaryRegistrationEnumEntity.entityByTitle(""))
+            );
+            this.militaryEntityViewList.add(new RegistrationMark(""));
         }
         return this.militaryEntityViewList;
     }

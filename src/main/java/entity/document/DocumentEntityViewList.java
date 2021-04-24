@@ -8,6 +8,7 @@ import entity.employee.EmployeeSecondNameView;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -23,6 +24,7 @@ public class DocumentEntityViewList {
     }
 
     public List<EntityView> entityViewList() throws SQLException {
+        this.documentEntityViewList.clear();
         String request = "select * from documents where employee_id = " + employeeId;
         ResultSet resultSet = dataBase.getResultSet(request);
         while (resultSet.next()){
@@ -36,6 +38,24 @@ public class DocumentEntityViewList {
             this.documentEntityViewList.add(new DocumentPublisher(resultSet.getString(8)));
             this.documentEntityViewList.add(new DocumentReleaseDate(resultSet.getString(9)));
         }
+        return documentEntityViewList;
+    }
+
+    /**
+     * Список для добавления нового сотрудника
+     * @return List<EntityView>
+     */
+    public List<EntityView> defaultList() {
+        this.documentEntityViewList.clear();
+        this.documentEntityViewList.add(new EmployeeName(""));
+        this.documentEntityViewList.add(new EmployeePatronymicNameView(""));
+        this.documentEntityViewList.add(new EmployeeSecondNameView(""));
+        this.documentEntityViewList.add(new BirthDate(LocalDate.now().toString()));
+        this.documentEntityViewList.add(new DocumentType(""));
+        this.documentEntityViewList.add(new DocumentSerialView(""));
+        this.documentEntityViewList.add(new DocumentNumber("0"));
+        this.documentEntityViewList.add(new DocumentPublisher(""));
+        this.documentEntityViewList.add(new DocumentReleaseDate(LocalDate.now()));
         return documentEntityViewList;
     }
 }

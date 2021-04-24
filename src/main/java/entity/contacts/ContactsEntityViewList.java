@@ -20,6 +20,7 @@ public class ContactsEntityViewList {
     }
 
     public List<EntityView> contactsEntityViewList() throws SQLException {
+        this.contactsEntityViewList.clear();
         String request = "select * from contacts where employee_id = " + employeeId;
         ResultSet resultSet = dataBase.getResultSet(request);
         while (resultSet.next()){
@@ -28,6 +29,19 @@ public class ContactsEntityViewList {
             this.contactsEntityViewList.add(new HomePhone(resultSet.getString(3)));
             this.contactsEntityViewList.add(new Email(resultSet.getString(4)));
         }
+        return this.contactsEntityViewList;
+    }
+
+    /**
+     * Список для добавления нового сотрудника
+     * @return List<EntityView>
+     */
+    public List<EntityView> defaultList() {
+        this.contactsEntityViewList.clear();
+        this.contactsEntityViewList.add(new Adress(""));
+        this.contactsEntityViewList.add(new WorkPhone(""));
+        this.contactsEntityViewList.add(new HomePhone(""));
+        this.contactsEntityViewList.add(new Email(""));
         return this.contactsEntityViewList;
     }
 }

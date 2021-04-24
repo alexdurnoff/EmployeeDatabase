@@ -33,6 +33,7 @@ public abstract class TextFilter implements Filter {
         this.hBox.getChildren().add(textField);
         this.hBox.getChildren().add(applyButton);
         this.hBox.getChildren().add(cancelButton);
+        this.hBox.setSpacing(10);
     }
 
     /**

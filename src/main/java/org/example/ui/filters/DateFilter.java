@@ -3,6 +3,7 @@ package org.example.ui.filters;
 import dao.DataBase;
 import javafx.scene.control.Button;
 import javafx.scene.control.DatePicker;
+import javafx.scene.control.Label;
 import javafx.scene.layout.HBox;
 
 import java.sql.ResultSet;
@@ -27,6 +28,12 @@ public abstract class DateFilter implements Filter {
         this.cancelButton = new Button("Отмена");
         this.hBox = new HBox();
         this.datePicker = new DatePicker();
+        this.hBox.getChildren().add(new Label(labelName()));
+        this.hBox.getChildren().add(datePicker);
+        this.hBox.getChildren().add(applyButton);
+        this.hBox.getChildren().add(cancelButton);
+        this.hBox.setSpacing(10);
+        this.hBox.setPrefWidth(400);
     }
 
     /**

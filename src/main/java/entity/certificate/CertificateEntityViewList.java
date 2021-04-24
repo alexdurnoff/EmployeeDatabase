@@ -20,6 +20,7 @@ public class CertificateEntityViewList {
     }
 
     public List<EntityView> entityViewList() throws SQLException {
+        this.entityViewList.clear();
         String request = "select * from certificate where employee_id = " + employeeId + ';';
         ResultSet resultSet = dataBase.getResultSet(request);
         while (resultSet.next()){
@@ -28,6 +29,18 @@ public class CertificateEntityViewList {
             this.entityViewList.add(new Qualification(
                     resultSet.getString(4)));
         }
+        return entityViewList;
+    }
+
+    /**
+     * Список для добавления нового сотрудника
+     * @return List<EntityView>
+     */
+    public List<EntityView> defaultList() {
+        this.entityViewList.clear();
+        this.entityViewList.add(new CertificateCity(""));
+        this.entityViewList.add(new CertificateOrganization(""));
+        this.entityViewList.add(new Qualification(""));
         return entityViewList;
     }
 }

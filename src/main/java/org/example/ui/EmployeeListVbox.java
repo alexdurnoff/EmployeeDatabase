@@ -1,9 +1,9 @@
 package org.example.ui;
 
+import dao.AddEmployeeId;
 import dao.DataBase;
 import dao.DefaultEmployeeList;
 import entity.employee.Employee;
-import javafx.scene.control.Button;
 import javafx.scene.layout.VBox;
 import org.example.ui.filters.FilterList;
 import org.example.ui.filters.FilterPane;
@@ -54,6 +54,20 @@ public class EmployeeListVbox extends VBox {
      * @param employeeList - список Employee.
      */
     private void fill(List<Employee> employeeList){
+        EmployeeScrollPaneHeaderHBox headerHBox = new EmployeeScrollPaneHeaderHBox();
+        this.getChildren().add(headerHBox);
+        headerHBox.getAddEmployeeButton().setOnAction(ae ->{
+            try {
+                new AddEmployeeCard(
+                        new AddEmployeeId(dataBase).id(),
+                        dataBase,
+                        this
+                ).show();
+            } catch (SQLException exception) {
+                exception.printStackTrace();
+            }
+        });
+
         employeeList.forEach(employee -> {
             this.getChildren().add(employee.hBox(dataBase, this));
         });

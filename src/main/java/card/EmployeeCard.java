@@ -12,10 +12,10 @@ import java.util.Optional;
  * Карточка сотрудника
  */
 public class EmployeeCard {
-    private final int employeeId;
-    private final CardPartitions cardPartitions;
-    private boolean saved;
-    private final EmployeeListVbox employeeListVbox;
+    protected final int employeeId;
+    protected CardPartitions cardPartitions;
+    protected boolean saved;
+    protected final EmployeeListVbox employeeListVbox;
 
 
     public EmployeeCard(int employeeId, DataBase dataBase, EmployeeListVbox employeeListVbox) throws SQLException {

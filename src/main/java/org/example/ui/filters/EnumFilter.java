@@ -3,7 +3,9 @@ package org.example.ui.filters;
 import dao.DataBase;
 import javafx.scene.control.Button;
 import javafx.scene.control.ChoiceBox;
+import javafx.scene.control.Label;
 import javafx.scene.layout.HBox;
+import javafx.util.StringConverter;
 import org.example.ui.EnumEntity;
 
 import java.sql.ResultSet;
@@ -33,6 +35,12 @@ public abstract class EnumFilter implements Filter{
         this.choiceBox = new ChoiceBox<>();
         this.choiceBox.getItems().addAll(Arrays.asList(enumEntity.valueArray()));
         this.choiceBox.setValue(enumEntity.defaultValue());
+        this.choiceBox.setConverter(enumEntity.stringConverter());
+        this.hBox.getChildren().add(new Label(labelName()));
+        this.hBox.getChildren().add(choiceBox);
+        this.hBox.getChildren().add(applyButton);
+        this.hBox.getChildren().add(cancelButton);
+        this.hBox.setSpacing(10);
     }
 
     /**

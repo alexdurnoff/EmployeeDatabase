@@ -21,6 +21,7 @@ public class EducationAndFamilyEntityViewList {
     }
 
     public List<EntityView> entityViewList() throws SQLException {
+        this.entityViewList.clear();
         String request = "select * from education_and_family where employee_id = " + employeeId;
         ResultSet resultSet = dataBase.getResultSet(request);
         while (resultSet.next()){
@@ -41,6 +42,31 @@ public class EducationAndFamilyEntityViewList {
             );
             //this.entityViewList.add(new LivingAreaEntityView(resultSet.getString(9)));
         }
+        return entityViewList;
+    }
+
+    /**
+     * Список для добавления нового сотрудника
+     * @return List<EntityView>
+     */
+    public List<EntityView> defaultList() {
+        this.entityViewList.clear();
+        //this.entityViewList.add(new EducationAndFamilyHeader());
+        this.entityViewList.add(new EnumEntityView(Education.entityByTitle("")));
+        this.entityViewList.add(new EducationInstitute(""));
+        this.entityViewList.add(new LanguageEntityView(
+                "нет",
+                "")
+        );
+        this.entityViewList.add(new ChildrenEntityView(
+                "нет",
+                "")
+        );
+        this.entityViewList.add(new InvalidEntityView(
+                "нет",
+                "")
+        );
+        //this.entityViewList.add(new LivingAreaEntityView(resultSet.getString(9)));
         return entityViewList;
     }
 }

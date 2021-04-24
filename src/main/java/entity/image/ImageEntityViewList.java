@@ -26,4 +26,14 @@ public class ImageEntityViewList {
         }
         return entityViewList;
     }
+
+    /**
+     * Список для добавления нового сотрудника
+     * @return List<EntityView>
+     */
+    public List<EntityView> defaultList() {
+        List<EntityView> entityViewList = new ArrayList<>();
+        entityViewList.add(new ImageEntityView(""));
+        return entityViewList;
+    }
 }

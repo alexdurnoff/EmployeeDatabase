@@ -26,6 +26,7 @@ public class JobEntityViewList {
 
 
     public List<EntityView> jobEntityViewList() throws SQLException {
+        this.jobEntityViewList.clear();
         String request = "select * from jobs where employee_id = " + employeeId;
         ResultSet resultSet = dataBase.getResultSet(request);
         while (resultSet.next()){
@@ -39,6 +40,24 @@ public class JobEntityViewList {
             this.jobEntityViewList.add(new HolidaySchedule(resultSet.getString(10)));
             this.jobEntityViewList.add(new EnumEntityView(PaymentEnumEntity.entityByTitle(resultSet.getString(11))));
         }
+        return this.jobEntityViewList;
+    }
+
+    /**
+     * Список для добавления нового сотрудника
+     * @return List<EntityView>
+     */
+    public List<EntityView> defaultList() {
+        this.jobEntityViewList.clear();
+        //this.jobEntityViewList.add(new JobHeaderView());
+        this.jobEntityViewList.add(new GettingStartedView(""));
+        this.jobEntityViewList.add(new TableNumberView(0));
+        this.jobEntityViewList.add(new EnumEntityView(DivisionEnumEntity.entityByTitle("")));
+        this.jobEntityViewList.add(new EnumEntityView(PostEnumEntity.entityByTitle("")));
+        //this.jobEntityViewList.add(new AgreementFromResultSet(resultSet).employmentAgreement());
+        this.jobEntityViewList.add(new WorkSchedule(""));
+        this.jobEntityViewList.add(new HolidaySchedule(""));
+        this.jobEntityViewList.add(new EnumEntityView(PaymentEnumEntity.entityByTitle("")));
         return this.jobEntityViewList;
     }
 }

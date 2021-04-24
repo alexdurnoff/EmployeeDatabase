@@ -1,5 +1,6 @@
 package org.example.ui.filters;
 
+import javafx.scene.layout.FlowPane;
 import javafx.scene.layout.VBox;
 import org.example.ui.EmployeeListVbox;
 
@@ -10,7 +11,7 @@ import java.util.List;
 /**
  * Панель фильтрации.
  */
-public class FilterPane extends VBox {
+public class FilterPane extends VBox{
 
     private final List<Filter> filterList;
     private final EmployeeListVbox employeeListVbox;
@@ -36,6 +37,7 @@ public class FilterPane extends VBox {
                 }
             });
             this.getChildren().add(filter.hbox());
+            this.setSpacing(5);
         });
     }
 
