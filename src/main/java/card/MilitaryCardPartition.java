@@ -29,4 +29,9 @@ public class MilitaryCardPartition extends EmployeeCardPartition{
     protected List<EntityView> entityViewList() throws SQLException {
         return this.entityViewList;
     }
+
+    @Override
+    public void insertNewEmployee() throws SQLException {
+
+    }
 }
