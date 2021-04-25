@@ -16,7 +16,7 @@ public class VUSCodeName extends TextEntityView {
     }
 
     @Override
-    protected String ORMCellTitle() {
+    public String column() {
         return "vus_code_name";
     }
 }

@@ -16,7 +16,7 @@ public class MilitaryCommissariat extends TextEntityView {
     }
 
     @Override
-    protected String ORMCellTitle() {
+    public String column() {
         return "military_commissariat";
     }
 }

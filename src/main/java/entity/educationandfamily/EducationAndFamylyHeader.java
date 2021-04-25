@@ -17,4 +17,9 @@ public class EducationAndFamylyHeader implements entity.EntityView {
     public String insertRequestValue() {
         return null;
     }
+
+    @Override
+    public String column() {
+        return null;
+    }
 }

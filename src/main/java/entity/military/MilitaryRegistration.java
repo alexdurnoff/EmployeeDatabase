@@ -68,6 +68,11 @@ public enum MilitaryRegistration implements EntityView, Predicate<MilitaryRegist
     }
 
     @Override
+    public String column() {
+        return "military_registration";
+    }
+
+    @Override
     public boolean test(MilitaryRegistration militaryRegistration) {
         if (militaryRegistration == DEFAULTREGISTRATION) return true;
         return this == militaryRegistration;

@@ -14,4 +14,9 @@ public class JobHeaderView extends HeaderEntityView {
     protected String labelTitle() {
         return "сведения о работе";
     }
+
+    @Override
+    public String column() {
+        return null;
+    }
 }

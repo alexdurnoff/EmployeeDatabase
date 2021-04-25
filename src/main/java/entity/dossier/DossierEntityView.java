@@ -15,7 +15,7 @@ public class DossierEntityView extends TextEntityView {
     }
 
     @Override
-    protected String ORMCellTitle() {
+    public String column() {
         return "dossier";
     }
 }

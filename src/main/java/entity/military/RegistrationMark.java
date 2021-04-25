@@ -16,7 +16,7 @@ public class RegistrationMark extends TextEntityView {
     }
 
     @Override
-    protected String ORMCellTitle() {
+    public String column() {
         return "military_registration_mark";
     }
 }

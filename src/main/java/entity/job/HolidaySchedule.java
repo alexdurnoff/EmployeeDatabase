@@ -15,7 +15,7 @@ public class HolidaySchedule extends TextEntityView {
     }
 
     @Override
-    protected String ORMCellTitle() {
+    public String column() {
         return "holiday_schedule";
     }
 }

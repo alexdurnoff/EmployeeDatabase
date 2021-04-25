@@ -122,6 +122,11 @@ public enum DivisionView implements Predicate<DivisionView>, EntityView {
 
     @Override
     public String insertRequestValue() {
-        return null;
+        return this.usersChoice().title;
+    }
+
+    @Override
+    public String column() {
+        return "division";
     }
 }

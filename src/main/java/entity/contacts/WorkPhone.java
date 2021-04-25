@@ -14,7 +14,7 @@ public class WorkPhone extends TextEntityView {
     }
 
     @Override
-    protected String ORMCellTitle() {
+    public String column() {
         return "work_number";
     }
 }

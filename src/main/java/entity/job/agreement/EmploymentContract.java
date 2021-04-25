@@ -73,4 +73,9 @@ public class EmploymentContract implements EmploymentAgreement {
         return "трудовой контракт, " +
                 this.localDateFrom + ", " + LocalDate.now();
     }
+
+    @Override
+    public String column() {
+        return "agreement, date_from, date_to";
+    }
 }

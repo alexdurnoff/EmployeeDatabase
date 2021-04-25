@@ -26,4 +26,10 @@ public interface EntityView {
      * @return String часть строки запроса.
      */
     String insertRequestValue();
+
+    /**
+     * Метод возвращает название столбца в таблице базы данных
+     * @return String column
+     */
+    String column();
 }

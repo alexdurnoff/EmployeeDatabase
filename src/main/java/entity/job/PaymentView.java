@@ -71,6 +71,11 @@ public enum PaymentView implements Predicate<PaymentView>, EntityView {
         return this.userChoice().title;
     }
 
+    @Override
+    public String column() {
+        return "payment";
+    }
+
     public PaymentView userChoice(){
         return this.choiceBox.getValue();
     }

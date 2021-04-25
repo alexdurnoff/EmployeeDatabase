@@ -16,7 +16,7 @@ public class Qualification extends TextEntityView {
     }
 
     @Override
-    protected String ORMCellTitle() {
+    public String column() {
         return "qualification";
     }
 }

@@ -13,7 +13,7 @@ public class EmployeeSecondNameView extends TextEntityView {
     }
 
     @Override
-    protected String ORMCellTitle() {
+    public String column() {
         return "second_name";
     }
 }

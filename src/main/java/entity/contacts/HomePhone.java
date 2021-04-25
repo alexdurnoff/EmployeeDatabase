@@ -18,7 +18,7 @@ public class HomePhone extends TextEntityView {
     }
 
     @Override
-    protected String ORMCellTitle() {
+    public String column() {
         return "home_number";
     }
 }

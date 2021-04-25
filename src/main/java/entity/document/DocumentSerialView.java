@@ -14,7 +14,7 @@ public class DocumentSerialView extends TextEntityView {
     }
 
     @Override
-    protected String ORMCellTitle() {
+    public String column() {
         return "document_serial";
     }
 }

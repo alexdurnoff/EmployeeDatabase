@@ -78,7 +78,12 @@ public enum AvailableCategory implements EntityView, Predicate<AvailableCategory
 
     @Override
     public String insertRequestValue() {
-        return null;
+        return this.userChoice().title;
+    }
+
+    @Override
+    public String column() {
+        return "available_category";
     }
 
     @Override

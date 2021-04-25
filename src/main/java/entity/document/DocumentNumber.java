@@ -38,4 +38,9 @@ public class DocumentNumber implements EntityView {
     public String insertRequestValue() {
         return String.valueOf(number);
     }
+
+    @Override
+    public String column() {
+        return "document_number";
+    }
 }

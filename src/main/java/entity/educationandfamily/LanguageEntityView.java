@@ -22,4 +22,6 @@ public class LanguageEntityView extends RadioButtonEntityView {
     protected String column2Header() {
         return "language";
     }
+
+
 }

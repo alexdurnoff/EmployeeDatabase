@@ -24,14 +24,19 @@ public class DocumentType implements EntityView {
 
     @Override
     public String requestPart() {
-        return "document_type = " +
+        return  column() + " = " +
                 "'" +
-                this.choiceBox.getValue() +
+                insertRequestValue() +
                 "'";
     }
 
     @Override
     public String insertRequestValue() {
         return this.choiceBox.getValue();
+    }
+
+    @Override
+    public String column() {
+        return "document_type";
     }
 }

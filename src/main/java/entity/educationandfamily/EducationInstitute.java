@@ -14,7 +14,7 @@ public class EducationInstitute extends TextEntityView {
     }
 
     @Override
-    protected String ORMCellTitle() {
+    public String column() {
         return "education_institute";
     }
 }

@@ -62,6 +62,11 @@ public class TableNumberView implements EntityView {
         return String.valueOf(this.value());
     }
 
+    @Override
+    public String column() {
+        return "table_number";
+    }
+
     public boolean test(TableNumberView tableNumberView) {
         if (tableNumberView.value() == defaultTableNumber) return true;
         return this.value() == tableNumberView.value();

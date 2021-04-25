@@ -65,4 +65,9 @@ public class DefaultAgreement implements EmploymentAgreement {
         return "трудовое соглашение, " +
                 LocalDate.now() + ", " + LocalDate.now();
     }
+
+    @Override
+    public String column() {
+        return "agreement, date_from, date_to";
+    }
 }

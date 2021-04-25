@@ -13,7 +13,7 @@ public class EmployeePatronymicNameView extends TextEntityView {
     }
 
     @Override
-    protected String ORMCellTitle() {
+    public String column() {
         return "patronymic_name";
     }
 }

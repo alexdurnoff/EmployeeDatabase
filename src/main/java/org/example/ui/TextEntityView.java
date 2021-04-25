@@ -21,7 +21,6 @@ public abstract class TextEntityView implements EntityView {
     }
 
     protected abstract String labelText();
-    protected abstract String ORMCellTitle();
 
     @Override
     public void addToGridPane(GridPane gridPane, int rowNumber) {
@@ -32,7 +31,7 @@ public abstract class TextEntityView implements EntityView {
 
     @Override
     public String requestPart() {
-        return  ORMCellTitle() +
+        return  column() +
                 " = '" +
                 value() +
                 "'";
@@ -47,4 +46,5 @@ public abstract class TextEntityView implements EntityView {
     public String insertRequestValue() {
         return this.value();
     }
+
 }

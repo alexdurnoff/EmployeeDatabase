@@ -79,4 +79,9 @@ public class ContractAgreement implements EmploymentAgreement {
                 ", " + localDateFrom.toString() +
                 ", " + localDateTO.toString();
     }
+
+    @Override
+    public String column() {
+        return "agreement, date_from, date_to";
+    }
 }

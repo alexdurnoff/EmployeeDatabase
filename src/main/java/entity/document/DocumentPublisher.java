@@ -14,7 +14,7 @@ public class DocumentPublisher extends TextEntityView {
     }
 
     @Override
-    protected String ORMCellTitle() {
+    public String column() {
         return "document_publisher";
     }
 }

@@ -45,12 +45,9 @@ public class RequestByEntityViewList {
         StringBuilder stringBuilder = new StringBuilder();
         stringBuilder.append("insert into ")
                 .append(table)
-                .append(" values (");
-        for (EntityView entityView : entityViewList) {
-            stringBuilder.append(' ');
-            stringBuilder.append(entityView.insertRequestValue());
-            stringBuilder.append(",");
-        }
-        return null;
+                .append(new EntityRequestColumns(entityViewList).columns())
+                .append(new EntityRequestValues(employeeId, entityViewList).values())
+                .append(';');
+        return stringBuilder.toString();
     }
 }

@@ -83,4 +83,9 @@ public abstract class RadioButtonEntityView implements EntityView {
     public String insertRequestValue() {
         return yesOrNo() + ", " + textField.getText();
     }
+
+    @Override
+    public String column() {
+        return column1Header() + ", " + column2Header();
+    }
 }

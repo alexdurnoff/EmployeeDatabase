@@ -14,7 +14,7 @@ public class Email extends TextEntityView {
     }
 
     @Override
-    protected String ORMCellTitle() {
+    public String column() {
         return "email";
     }
 }

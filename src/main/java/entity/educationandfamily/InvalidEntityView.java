@@ -22,4 +22,6 @@ public class InvalidEntityView extends RadioButtonEntityView {
     protected String column2Header() {
         return "invalid";
     }
+
+
 }

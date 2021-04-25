@@ -42,4 +42,9 @@ public class EnumEntityView implements EntityView {
     public String insertRequestValue() {
         return choiceBox.getValue();
     }
+
+    @Override
+    public String column() {
+        return entity.columnName();
+    }
 }

@@ -19,7 +19,7 @@ public class WorkSchedule extends TextEntityView {
     }
 
     @Override
-    protected String ORMCellTitle() {
+    public String column() {
         return "work_schedule";
     }
 }
