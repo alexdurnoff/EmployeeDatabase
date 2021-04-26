@@ -19,13 +19,14 @@ public class AgreementFromResultSet {
         LocalDate toDate;
         String type;
         try {
-            type = resultSet.getString(5);
+            type = resultSet.getString(6);
+            System.out.println("agreement type is " + type);
             fromDate = LocalDate.parse(resultSet.getString(6));
             toDate = LocalDate.parse(resultSet.getString(7));
         } catch (Exception exception){
             return new DefaultAgreement();
         }
-        if (type.equals("трудовой договор")) {
+        if (type.equals("трудовой контракт") || type.equals("трудовой договор")) {
             return new EmploymentContract(fromDate);
         } else if (type.equals("трудовое соглашение")){
             return new ContractAgreement(fromDate, toDate);

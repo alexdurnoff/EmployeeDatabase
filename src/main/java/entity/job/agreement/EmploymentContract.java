@@ -30,7 +30,7 @@ public class EmploymentContract implements EmploymentAgreement {
 
     @Override
     public String title() {
-        return "трудовой договор";
+        return "трудовой контракт";
     }
 
     @Override
@@ -50,12 +50,12 @@ public class EmploymentContract implements EmploymentAgreement {
         datePicker.setOnAction(ae -> this.localDateFrom = datePicker.getValue());
         this.choiceBox.setValue(this);
         this.choiceBox.setConverter(stringConverter());
-        /*this.choiceBox.setOnAction(ae ->{
+        this.choiceBox.setOnAction(ae ->{
             gridPane.getChildren().remove(label);
             gridPane.getChildren().remove(this.choiceBox);
             gridPane.getChildren().remove(datePicker);
             this.choiceBox.getValue().addToGridPane(gridPane, rowNumber);
-        });*/
+        });
         gridPane.add(label, 0, rowNumber);
         gridPane.add(choiceBox, 1, rowNumber);
         gridPane.add(datePicker, 2, rowNumber);

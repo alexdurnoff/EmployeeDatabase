@@ -21,7 +21,7 @@ public interface EmploymentAgreement extends Predicate<EmploymentAgreement>, Ent
 
             @Override
             public EmploymentAgreement fromString(String string) {
-                if (string.equals("трудовой договор")){
+                if (string.equals("трудовой договор") || string.equals("трудовой контракт")){
                     return new EmploymentContract(LocalDate.now());
                 } else if (string.equals("договор подряда")) {
                     return new ContractAgreement(LocalDate.now(), LocalDate.now());
