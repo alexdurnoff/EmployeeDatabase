@@ -1,5 +1,6 @@
 package entity.educationandfamily;
 
+import hibernate.HibernateEntity;
 import org.example.ui.RadioButtonEntityView;
 
 public class LanguageEntityView extends RadioButtonEntityView {
@@ -24,4 +25,8 @@ public class LanguageEntityView extends RadioButtonEntityView {
     }
 
 
+    @Override
+    public HibernateEntity entity() {
+        return null;
+    }
 }

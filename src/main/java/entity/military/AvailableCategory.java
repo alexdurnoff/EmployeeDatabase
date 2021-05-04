@@ -1,6 +1,7 @@
 package entity.military;
 
 import entity.EntityView;
+import hibernate.HibernateEntity;
 import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.Label;
 import javafx.scene.layout.GridPane;
@@ -84,6 +85,11 @@ public enum AvailableCategory implements EntityView, Predicate<AvailableCategory
     @Override
     public String column() {
         return "available_category";
+    }
+
+    @Override
+    public HibernateEntity entity() {
+        return null;
     }
 
     @Override

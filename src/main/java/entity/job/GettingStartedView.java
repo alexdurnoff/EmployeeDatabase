@@ -1,6 +1,7 @@
 package entity.job;
 
 import entity.EntityView;
+import hibernate.HibernateEntity;
 import javafx.scene.control.DatePicker;
 import javafx.scene.control.Label;
 import javafx.scene.layout.GridPane;
@@ -96,6 +97,11 @@ public class GettingStartedView implements Predicate<GettingStartedView>, Entity
     @Override
     public String column() {
         return "getting_started";
+    }
+
+    @Override
+    public HibernateEntity entity() {
+        return null;
     }
 
     public String userChoice() {

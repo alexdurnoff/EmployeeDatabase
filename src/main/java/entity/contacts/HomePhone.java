@@ -1,6 +1,7 @@
 package entity.contacts;
 
 import entity.EntityView;
+import hibernate.HibernateEntity;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.GridPane;
@@ -20,5 +21,10 @@ public class HomePhone extends TextEntityView {
     @Override
     public String column() {
         return "home_number";
+    }
+
+    @Override
+    public HibernateEntity entity() {
+        return null;
     }
 }

@@ -1,6 +1,7 @@
 package entity.military;
 
 import entity.EntityView;
+import hibernate.HibernateEntity;
 import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.Label;
 import javafx.scene.layout.GridPane;
@@ -82,5 +83,10 @@ public enum MilitaryDivision implements EntityView {
     @Override
     public String column() {
         return "military_division";
+    }
+
+    @Override
+    public HibernateEntity entity() {
+        return null;
     }
 }

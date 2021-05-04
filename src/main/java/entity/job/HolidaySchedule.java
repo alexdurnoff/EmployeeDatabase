@@ -1,5 +1,6 @@
 package entity.job;
 
+import hibernate.HibernateEntity;
 import org.example.ui.TextEntityView;
 
 
@@ -17,5 +18,10 @@ public class HolidaySchedule extends TextEntityView {
     @Override
     public String column() {
         return "holiday_schedule";
+    }
+
+    @Override
+    public HibernateEntity entity() {
+        return null;
     }
 }

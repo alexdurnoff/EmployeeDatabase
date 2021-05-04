@@ -1,6 +1,7 @@
 package entity.document;
 
 import entity.EntityView;
+import hibernate.HibernateEntity;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.GridPane;
@@ -42,5 +43,10 @@ public class DocumentNumber implements EntityView {
     @Override
     public String column() {
         return "document_number";
+    }
+
+    @Override
+    public HibernateEntity entity() {
+        return null;
     }
 }

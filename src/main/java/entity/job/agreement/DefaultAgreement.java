@@ -1,6 +1,7 @@
 package entity.job.agreement;
 
 import entity.EntityView;
+import hibernate.HibernateEntity;
 import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.Label;
 import javafx.scene.layout.GridPane;
@@ -69,5 +70,10 @@ public class DefaultAgreement implements EmploymentAgreement {
     @Override
     public String column() {
         return "agreement, date_from, date_to";
+    }
+
+    @Override
+    public HibernateEntity entity() {
+        return null;
     }
 }

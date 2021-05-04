@@ -1,6 +1,7 @@
 package entity.military;
 
 import entity.EntityView;
+import hibernate.HibernateEntity;
 import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.Label;
 import javafx.scene.layout.GridPane;
@@ -89,6 +90,11 @@ public enum MilitaryRankView implements EntityView, Predicate<MilitaryRankView> 
     @Override
     public String column() {
         return "military_rank";
+    }
+
+    @Override
+    public HibernateEntity entity() {
+        return null;
     }
 
     /**

@@ -1,6 +1,7 @@
 package entity.job;
 
 import entity.EntityView;
+import hibernate.HibernateEntity;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.GridPane;
@@ -65,6 +66,11 @@ public class TableNumberView implements EntityView {
     @Override
     public String column() {
         return "table_number";
+    }
+
+    @Override
+    public HibernateEntity entity() {
+        return null;
     }
 
     public boolean test(TableNumberView tableNumberView) {

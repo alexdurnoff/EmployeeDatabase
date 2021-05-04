@@ -1,5 +1,6 @@
 package entity.certificate;
 
+import hibernate.HibernateEntity;
 import org.example.ui.RadioButtonEntityView;
 import org.example.ui.TextEntityView;
 
@@ -18,5 +19,10 @@ public class Qualification extends TextEntityView {
     @Override
     public String column() {
         return "qualification";
+    }
+
+    @Override
+    public HibernateEntity entity() {
+        return null;
     }
 }

@@ -1,6 +1,7 @@
 package entity.contacts;
 
 
+import hibernate.HibernateEntity;
 import org.example.ui.TextEntityView;
 
 public class Adress extends TextEntityView {
@@ -17,6 +18,11 @@ public class Adress extends TextEntityView {
     @Override
     public String column() {
         return "home_adress";
+    }
+
+    @Override
+    public HibernateEntity entity() {
+        return null;
     }
 
 }

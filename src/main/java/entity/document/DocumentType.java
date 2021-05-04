@@ -1,6 +1,7 @@
 package entity.document;
 
 import entity.EntityView;
+import hibernate.HibernateEntity;
 import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.Label;
 import javafx.scene.layout.GridPane;
@@ -38,5 +39,10 @@ public class DocumentType implements EntityView {
     @Override
     public String column() {
         return "document_type";
+    }
+
+    @Override
+    public HibernateEntity entity() {
+        return null;
     }
 }

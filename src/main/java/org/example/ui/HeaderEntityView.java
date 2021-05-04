@@ -1,6 +1,7 @@
 package org.example.ui;
 
 import entity.EntityView;
+import hibernate.HibernateEntity;
 import javafx.scene.control.Label;
 import javafx.scene.layout.GridPane;
 
@@ -28,6 +29,11 @@ public abstract class HeaderEntityView implements EntityView {
 
     @Override
     public String column() {
+        return null;
+    }
+
+    @Override
+    public HibernateEntity entity() {
         return null;
     }
 }

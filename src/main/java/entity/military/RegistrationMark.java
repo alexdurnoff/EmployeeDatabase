@@ -1,6 +1,7 @@
 package entity.military;
 
 import entity.EntityView;
+import hibernate.HibernateEntity;
 import javafx.scene.layout.GridPane;
 import org.example.ui.TextEntityView;
 
@@ -18,5 +19,10 @@ public class RegistrationMark extends TextEntityView {
     @Override
     public String column() {
         return "military_registration_mark";
+    }
+
+    @Override
+    public HibernateEntity entity() {
+        return null;
     }
 }

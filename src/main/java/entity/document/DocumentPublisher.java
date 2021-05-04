@@ -1,5 +1,6 @@
 package entity.document;
 
+import hibernate.HibernateEntity;
 import org.example.ui.TextEntityView;
 
 public class DocumentPublisher extends TextEntityView {
@@ -16,5 +17,10 @@ public class DocumentPublisher extends TextEntityView {
     @Override
     public String column() {
         return "document_publisher";
+    }
+
+    @Override
+    public HibernateEntity entity() {
+        return null;
     }
 }

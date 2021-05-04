@@ -1,5 +1,6 @@
 package entity.educationandfamily;
 
+import hibernate.HibernateEntity;
 import javafx.scene.layout.GridPane;
 
 public class EducationAndFamylyHeader implements entity.EntityView {
@@ -20,6 +21,11 @@ public class EducationAndFamylyHeader implements entity.EntityView {
 
     @Override
     public String column() {
+        return null;
+    }
+
+    @Override
+    public HibernateEntity entity() {
         return null;
     }
 }

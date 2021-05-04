@@ -1,5 +1,6 @@
 package entity.document;
 
+import hibernate.HibernateEntity;
 import org.example.ui.TextEntityView;
 
 public class DocumentSerialView extends TextEntityView {
@@ -16,5 +17,10 @@ public class DocumentSerialView extends TextEntityView {
     @Override
     public String column() {
         return "document_serial";
+    }
+
+    @Override
+    public HibernateEntity entity() {
+        return null;
     }
 }

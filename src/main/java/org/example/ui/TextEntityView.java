@@ -1,6 +1,7 @@
 package org.example.ui;
 
 import entity.EntityView;
+import hibernate.HibernateEntity;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.GridPane;
@@ -45,6 +46,11 @@ public abstract class TextEntityView implements EntityView {
     @Override
     public String insertRequestValue() {
         return this.value();
+    }
+
+    @Override
+    public HibernateEntity entity() {
+        return null;
     }
 
 }

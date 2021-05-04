@@ -1,5 +1,6 @@
 package entity;
 
+import hibernate.HibernateEntity;
 import javafx.scene.layout.GridPane;
 
 /**
@@ -32,4 +33,6 @@ public interface EntityView {
      * @return String column
      */
     String column();
+
+    HibernateEntity entity();
 }

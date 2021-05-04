@@ -1,6 +1,7 @@
 package entity.job.agreement;
 
 import entity.EntityView;
+import hibernate.HibernateEntity;
 import javafx.scene.control.Label;
 import javafx.util.StringConverter;
 
@@ -35,4 +36,8 @@ public interface EmploymentAgreement extends Predicate<EmploymentAgreement>, Ent
         return new Label("трудовое соглашение");
     }
 
+    @Override
+    default HibernateEntity entity() {
+        return null;
+    }
 }

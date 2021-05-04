@@ -1,6 +1,7 @@
 package entity.job;
 
 import entity.EntityView;
+import hibernate.HibernateEntity;
 import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.Label;
 import javafx.scene.layout.GridPane;
@@ -128,5 +129,10 @@ public enum DivisionView implements Predicate<DivisionView>, EntityView {
     @Override
     public String column() {
         return "division";
+    }
+
+    @Override
+    public HibernateEntity entity() {
+        return null;
     }
 }

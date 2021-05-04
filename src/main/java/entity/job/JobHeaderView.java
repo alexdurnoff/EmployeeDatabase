@@ -1,6 +1,7 @@
 package entity.job;
 
 import entity.EntityView;
+import hibernate.HibernateEntity;
 import javafx.scene.control.Label;
 import javafx.scene.layout.GridPane;
 import org.example.ui.HeaderEntityView;
@@ -17,6 +18,11 @@ public class JobHeaderView extends HeaderEntityView {
 
     @Override
     public String column() {
+        return null;
+    }
+
+    @Override
+    public HibernateEntity entity() {
         return null;
     }
 }

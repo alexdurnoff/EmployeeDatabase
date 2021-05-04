@@ -1,5 +1,6 @@
 package entity.educationandfamily;
 
+import hibernate.HibernateEntity;
 import org.example.ui.TextEntityView;
 
 public class LivingAreaEntityView extends TextEntityView {
@@ -16,5 +17,10 @@ public class LivingAreaEntityView extends TextEntityView {
     @Override
     public String column() {
         return "living_area";
+    }
+
+    @Override
+    public HibernateEntity entity() {
+        return null;
     }
 }

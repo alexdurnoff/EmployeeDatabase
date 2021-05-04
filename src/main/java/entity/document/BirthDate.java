@@ -1,6 +1,7 @@
 package entity.document;
 
 import entity.EntityView;
+import hibernate.HibernateEntity;
 import javafx.scene.control.DatePicker;
 import javafx.scene.control.Label;
 import javafx.scene.layout.GridPane;
@@ -40,5 +41,10 @@ public class BirthDate implements EntityView {
     @Override
     public String column() {
         return "birth_date";
+    }
+
+    @Override
+    public HibernateEntity entity() {
+        return null;
     }
 }

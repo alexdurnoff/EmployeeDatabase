@@ -1,6 +1,7 @@
 package org.example.ui;
 
 import entity.EntityView;
+import hibernate.HibernateEntity;
 import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.Label;
 import javafx.scene.layout.GridPane;
@@ -46,5 +47,10 @@ public class EnumEntityView implements EntityView {
     @Override
     public String column() {
         return entity.columnName();
+    }
+
+    @Override
+    public HibernateEntity entity() {
+        return null;
     }
 }

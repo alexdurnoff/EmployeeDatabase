@@ -1,6 +1,7 @@
 package entity.document;
 
 import entity.EntityView;
+import hibernate.HibernateEntity;
 import javafx.scene.control.DatePicker;
 import javafx.scene.control.Label;
 import javafx.scene.layout.GridPane;
@@ -44,5 +45,10 @@ public class DocumentReleaseDate implements EntityView {
     @Override
     public String column() {
         return "document_release_date";
+    }
+
+    @Override
+    public HibernateEntity entity() {
+        return null;
     }
 }

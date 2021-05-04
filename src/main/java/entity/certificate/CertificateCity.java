@@ -1,5 +1,6 @@
 package entity.certificate;
 
+import hibernate.HibernateEntity;
 import org.example.ui.TextEntityView;
 
 public class CertificateCity extends TextEntityView {
@@ -16,5 +17,10 @@ public class CertificateCity extends TextEntityView {
     @Override
     public String column() {
         return "certificate_city";
+    }
+
+    @Override
+    public HibernateEntity entity() {
+        return null;
     }
 }

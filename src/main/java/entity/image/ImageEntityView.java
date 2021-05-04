@@ -2,6 +2,7 @@ package entity.image;
 
 
 import entity.EntityView;
+import hibernate.HibernateEntity;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
@@ -47,5 +48,10 @@ public class ImageEntityView implements EntityView {
     @Override
     public String column() {
         return "image";
+    }
+
+    @Override
+    public HibernateEntity entity() {
+        return null;
     }
 }

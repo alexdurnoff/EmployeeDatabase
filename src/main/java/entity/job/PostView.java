@@ -1,6 +1,7 @@
 package entity.job;
 
 import entity.EntityView;
+import hibernate.HibernateEntity;
 import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.Label;
 import javafx.scene.layout.GridPane;
@@ -118,6 +119,11 @@ public enum PostView implements Predicate<PostView>, EntityView {
     @Override
     public String column() {
         return "post";
+    }
+
+    @Override
+    public HibernateEntity entity() {
+        return null;
     }
 
     public PostView userChoice(){

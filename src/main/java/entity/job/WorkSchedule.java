@@ -1,6 +1,7 @@
 package entity.job;
 
 import entity.EntityView;
+import hibernate.HibernateEntity;
 import javafx.scene.control.Label;
 import javafx.scene.layout.GridPane;
 import org.example.ui.TextEntityView;
@@ -21,5 +22,10 @@ public class WorkSchedule extends TextEntityView {
     @Override
     public String column() {
         return "work_schedule";
+    }
+
+    @Override
+    public HibernateEntity entity() {
+        return null;
     }
 }

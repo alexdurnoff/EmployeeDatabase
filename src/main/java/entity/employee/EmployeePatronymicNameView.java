@@ -1,5 +1,6 @@
 package entity.employee;
 
+import hibernate.HibernateEntity;
 import org.example.ui.TextEntityView;
 
 public class EmployeePatronymicNameView extends TextEntityView {
@@ -15,5 +16,10 @@ public class EmployeePatronymicNameView extends TextEntityView {
     @Override
     public String column() {
         return "patronymic_name";
+    }
+
+    @Override
+    public HibernateEntity entity() {
+        return null;
     }
 }

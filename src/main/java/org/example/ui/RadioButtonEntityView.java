@@ -1,6 +1,7 @@
 package org.example.ui;
 
 import entity.EntityView;
+import hibernate.HibernateEntity;
 import javafx.scene.control.Label;
 import javafx.scene.control.RadioButton;
 import javafx.scene.control.TextField;
@@ -87,5 +88,10 @@ public abstract class RadioButtonEntityView implements EntityView {
     @Override
     public String column() {
         return column1Header() + ", " + column2Header();
+    }
+
+    @Override
+    public HibernateEntity entity() {
+        return null;
     }
 }
